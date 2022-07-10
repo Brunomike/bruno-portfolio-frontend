@@ -1,0 +1,94 @@
+.registration__container {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+          box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-radius: 8px;
+  width: 60%;
+  height: 90vh;
+  overflow-y: auto;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.registration__container .registration__title {
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #374249;
+}
+
+.registration__container .registration__title div {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid var(--mainColor1);
+  color: #fff;
+}
+
+.registration__container .registration__title div img {
+  width: 100px;
+}
+
+.registration__container .registration__fields {
+  padding: 2rem 1rem;
+  -webkit-box-flex: .5;
+      -ms-flex: .5;
+          flex: .5;
+  overflow-y: scroll;
+}
+
+.registration__container .registration__fields ::-webkit-scrollbar-track {
+  width: 10px;
+}
+
+.registration__container .registration__fields form {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+}
+
+.registration__container .registration__fields form button {
+  width: 70%;
+  padding: .5rem 0;
+  outline: none;
+  color: #fff;
+  background-color: var(--primaryColor);
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 3px;
+}
+
+.registration__container .registration__fields form button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.registration__container .registration__fields a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.registration__container .registration__fields a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=RegistrationForm.css.map */

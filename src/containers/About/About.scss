@@ -1,0 +1,93 @@
+section.about {
+    align-items: center;
+    flex-direction: column;      
+
+    h2 {
+        font-size: 2.5rem;
+        color: var(--mainText);
+    }
+
+    div {
+        gap: 20px;
+
+        div {
+            padding: 8px;
+            flex: 0.5;
+
+            h3 {
+                color: var(--mainText);
+                padding: 8px 0;
+            }
+
+            p {
+                color: var(--gray-color);
+            }
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 220px;
+                margin-top: 2rem;
+                color: #fff;
+                background-color: var(--primaryColor);
+                padding: 8px 16px;
+                text-decoration: none;
+                border-radius: 5px;
+
+            }
+
+            .about__roles {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                // flex-wrap: wrap;
+
+                .role {
+                    width: 100%;
+                    display: flex;
+                    // flex-direction: column;
+                    gap: 8px;                    
+
+                    img {
+                        width: 170px;
+                        height: 100%;
+                        object-fit: contain;
+                        border-radius: 15px;
+                    }
+
+                    .role__content {
+                        flex: 1;
+                        width: 100%;
+                        h4 {
+                            color: var(--mainText);
+                        }
+                    }
+                }
+            }
+
+            .skills {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .skills__skill {
+                    padding: 0.5rem 1rem;
+                    margin-bottom: 1.5rem;
+                    margin-right: 1.5rem;
+                    font-size: 1rem;
+                    background: rgba(153, 153, 153, 0.2);
+                    border-radius: 5px;
+                    font-weight: 600;
+                    color: #777;
+                    max-width: 150px;
+                }
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            flex-direction: column;
+        }
+
+    }
+}

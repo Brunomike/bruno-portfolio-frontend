@@ -1,0 +1,103 @@
+footer {
+    width: 100%;
+    min-height: 50vh;
+    padding: 16px 64px;
+    flex-direction: column;
+    // background-color: rgba(13, 11, 49, 0.836);
+    // background-color: #313bac;
+    color: #fff;
+    background-color: rgb(15, 15, 15);
+
+    .footer__links {
+        flex: 1;
+        display: flex;
+        // border-bottom: 1px solid #fff;
+        justify-content: space-between;
+        gap: 10px;
+
+        .about-summary{
+            max-width: 400px;
+
+            @media screen and (max-width: 500px) {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: column-reverse;
+            justify-content: center;
+        }
+       
+    }
+
+
+    .footer__copyright {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // color: var(--mainText);
+        color: #fff;
+        padding: 1rem 0;
+
+        img {
+            width: 160px;
+            height: 80px;
+        }
+    }
+
+    .footer__social {
+        div {
+            display: flex;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 1rem;
+                transition: all 0.3s ease-in;
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    padding: 3px;
+                    // color: var(--mainText);
+                    color: #fff;
+
+                    &:hover {
+                        border-radius: 50%;
+                        background: gray;
+                    }
+                }
+
+
+            }
+
+            a:first-of-type {
+                margin-left: 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+        padding: 8px 16px;
+
+        .footer__social {
+            margin-bottom: 3rem;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        height: auto;
+    }
+}
+
+
+
+.footer__heading {
+    // color: var(--mainText);
+    color: #fff;
+    margin-bottom: 2rem;
+
+}

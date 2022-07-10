@@ -1,0 +1,77 @@
+.registration__container {
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+    flex-direction: row;
+    border-radius: 8px;
+    width: 60%;
+    height: 90vh;
+    overflow-y: auto;
+    transition: all 0.3s ease-in;
+
+    .registration__title {
+        flex: .5;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #374249;
+
+        div {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--mainColor1);
+            color: #fff;
+
+            img {
+                width: 100px;
+            }
+        }
+
+        @media screen and (max-width:900px) {
+            //display: none;
+        }
+    }
+
+    .registration__fields {        
+        ::-webkit-scrollbar-track {
+            width: 10px;
+        }
+
+        padding: 2rem 1rem;
+        flex: .5;
+        overflow-y: scroll;
+
+        form {            
+            flex-direction: column;
+            display: flex;
+            flex-direction: column;
+
+            button {
+                width: 70%;
+                padding: .5rem 0;
+                outline: none;
+                color: #fff;
+                background-color: var(--primaryColor);
+                margin-bottom: 8px;
+                border: none;
+                border-radius: 3px;
+
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                }
+
+            }
+        }
+
+
+        a {
+            text-decoration: none;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

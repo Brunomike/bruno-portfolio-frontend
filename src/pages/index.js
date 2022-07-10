@@ -1,0 +1,8 @@
+export { default as Portfolio } from './Portfolio'
+export { default as Resume } from './Resume'
+export { default as SignUp } from './SignUp'
+export { default as Login } from './Login'
+export { default as Dashboard } from './Dashboard'
+export { default as Testimonial } from './Testimonial'
+export { default as Project } from './Project'
+export { default as NotFound } from './NotFound'

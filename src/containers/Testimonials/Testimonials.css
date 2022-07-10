@@ -1,0 +1,212 @@
+section.testimonials {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 6rem 2rem 0;
+}
+
+section.testimonials h2 {
+  color: var(--mainText);
+  margin-bottom: 1rem;
+}
+
+.app__testimonial {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.app__testimonial-item {
+  width: 60%;
+  min-height: 320px;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.app__testimonial-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 2000px) {
+  .app__testimonial-item {
+    min-height: 450px;
+  }
+  .app__testimonial-item img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .app__testimonial-item {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .app__testimonial-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.app__testimonial-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  padding: 0 2rem;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.app__testimonial-content p {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  font-family: var(--font-base);
+}
+
+.app__testimonial-content h4 {
+  font-weight: 600;
+  margin-top: 2rem;
+  color: #313bac;
+}
+
+.app__testimonial-content h5 {
+  font-weight: 400;
+  color: var(--gray-color);
+  margin-top: 5px;
+}
+
+.app__testimonial-btns {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-top: 1rem;
+}
+
+.app__testimonial-btns div {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.app__testimonial-btns div svg {
+  width: 20px;
+  height: 20px;
+  color: #313bac;
+}
+
+.app__testimonial-btns div:hover {
+  background-color: #313bac;
+  cursor: pointer;
+}
+
+.app__testimonial-btns div:hover svg {
+  color: #fff;
+}
+
+.app__testimonial-brands {
+  width: 80%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.app__testimonial-brands div {
+  width: 150px;
+  margin: 1.5rem;
+}
+
+.app__testimonial-brands div img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.app__testimonial-brands div:hover img {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+@media screen and (min-width: 2000px) {
+  .app__testimonial-brands div {
+    width: 210px;
+    margin: 2rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__testimonial-brands div {
+    width: 120px;
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .app__testimonial-brands {
+    width: 100%;
+  }
+}
+
+.empty {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 4rem;
+}
+/*# sourceMappingURL=Testimonials.css.map */

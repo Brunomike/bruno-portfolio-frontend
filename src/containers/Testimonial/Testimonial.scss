@@ -1,0 +1,42 @@
+.testimonial {
+    align-items: center;
+    justify-content: center;    
+    padding: 1rem 2rem;    
+
+
+    form {
+        height: 85vh;
+        padding: 1rem;
+        background-color: #fff;
+        overflow-y: scroll;
+        border-radius: 5px;
+        border-top: 6px solid rgb(12, 12, 71);
+
+        h2 {
+            color: #000;
+        }
+
+        button {
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            color: #fff;
+            background-color: var(--primaryColor);
+            padding: .5rem 2rem;
+            margin-top: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            width: 90%;
+            height: 90%;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 20px !important;
+}

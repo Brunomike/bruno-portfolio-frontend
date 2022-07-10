@@ -1,0 +1,78 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import adminService from './projectService'
+
+const initialState = {
+    projects: [],
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
+    message: ''
+}
+
+//Fetch Projects
+export const getProjects = createAsyncThunk('api/projects', async (_, thunkAPI) => {
+    try {
+        return await adminService.getProjects()
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+});
+
+//Post Project
+export const postProject = createAsyncThunk('api/projects', async (projectData, thunkAPI) => {
+    try {
+        return await adminService.postProject(projectData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+});
+
+export const projectSlice = createSlice({
+    name: 'project',
+    initialState: initialState,
+    reducers: {
+        reset: (state) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.isSuccess = false;
+            state.message = '';
+        }
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getProjects.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getProjects.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.projects = action.payload;
+            })
+            .addCase(getProjects.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+                state.user = null;
+            })
+            .addCase(postProject.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(postProject.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.projects = action.payload;
+            })
+            .addCase(postProject.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+                state.projects = null;
+            })
+
+    }
+});
+
+export const { reset } = projectSlice.actions;
+export default projectSlice.reducer;

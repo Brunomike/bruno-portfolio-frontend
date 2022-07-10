@@ -1,3 +1,92 @@
+:root {
+  --mainColor: #eaeaea;
+  --secondaryColor: #fff;
+
+  --mainColor1: #15202b;
+  --secondaryColor1: #192734;
+
+
+  --mainBgColor: #fff;
+  --secondaryBgColor: #edf2f8;
+
+  --mainHeaderBg: hsla(0, 0%, 100%, .25);
+
+  --borderColor: #c1c1c1;
+
+  --mainText: black;
+  --secondaryText: #4b5156;
+
+  --themeDotBorder: #24292e;
+
+  --previewBg: rgba(251, 249, 243, 0.8);
+  --previewShadow: #f0ead6;
+
+  --buttonColor: black;
+
+  --gray-color: #6b7688;
+  --primaryColor: #0062b9;
+
+  /* Dark/Blue Theme */
+  --mainDarkColor: #15202b;
+  --secondaryDarkColor: #192734;
+
+  --mainColor1: #eaeaea;
+  --secondaryColor1: #fff;
+
+  --borderDarkColor: #164d56;
+
+  --mainDarkText: #fff;
+  --secondaryDarkText: #eeeeee;
+
+  --themeDotDarkBorder: #fff;
+
+  --previewDarkBg: rgba(25, 39, 52, 0.8);
+  --previewDarkShadow: #111921;
+
+  --mainBoxShadow: 0 0 25px rgba(0, 0, 0, 0.2);
+
+  --buttonDarkColor: #17a2b8;
+}
+
+.app__dark {
+  --mainColor: #15202b;
+
+  --mainText: white;
+
+  --mainBgColor: #1e2934;
+  --secondaryBgColor: rgb(22, 33, 44);
+
+  --mainHeaderBg: rgba(22, 33, 44, 0.505);
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0px
+}
+
+::-webkit-scrollbar-thumb {
+  border: 7px solid transparent;
+  background-clip: padding-box;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, .3)
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, .5)
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +94,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: overlay;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.app__flex {
+  display: flex;
+}
+
+.p-text {
+  color: var(--gray-color);
+  font-size: .8rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.head-text {
+  font-size: 2rem;
+}
+
+.bold-text {
+  color: var(--mainText);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #000 transparent #555 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,0 +1,134 @@
+section.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: auto;
+  padding-top: 4rem;
+}
+
+section.contact h1 {
+  color: var(--mainText);
+}
+
+section.contact .app__contact {
+  margin: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+section.contact .app__contact .contact__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8px 16px;
+  gap: 5px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 500px) {
+  section.contact .app__contact {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+section.contact form {
+  margin-top: 8px;
+  margin-bottom: 32px;
+  width: 70%;
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 16px;
+  -webkit-box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+          box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+  overflow: hidden;
+}
+
+section.contact form .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+section.contact form div:last-of-type {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.contact form div > button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 220px;
+  margin-top: 2rem;
+  color: #fff;
+  background-color: var(--primaryColor);
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+section.contact form div > button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 0 20px rgba(15, 64, 186, 0.15);
+          box-shadow: 0 0 20px rgba(15, 64, 186, 0.15);
+}
+
+@media screen and (max-width: 500px) {
+  section.contact form {
+    width: 90%;
+  }
+}
+
+input, select,
+textarea {
+  color: #333;
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid #ebebeb;
+  font-size: 1rem;
+  background: #f0f0f0;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+textarea {
+  min-height: 150px;
+}
+/*# sourceMappingURL=Contact.css.map */
