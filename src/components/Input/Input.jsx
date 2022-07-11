@@ -7,7 +7,7 @@ const Input = ({ type, name, placeholder, id, handleChange, value,multiple }) =>
             {type === "file" ?
                 (<input type={type} name={name} placeholder={placeholder} id={id} onChange={handleChange} value={value} multiple />)
                 :
-                (<input type={type} name={name} placeholder={placeholder} id={id} onChange={handleChange} value={value} />)
+                (<input type={type} name={name} placeholder={placeholder} id={name} onChange={handleChange} value={value} />)
             }
         </>
     )

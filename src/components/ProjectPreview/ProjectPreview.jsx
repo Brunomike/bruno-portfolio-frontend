@@ -13,7 +13,7 @@ const ProjectPreview = ({ imageUrl }) => {
           </div>
           <div className='webcam__mic'></div>
         </div>
-        <img src={`http://localhost:4000/${imageUrl}` alt="Project Preview"} />
+        <img src={`http://localhost:4000/${imageUrl}`} alt="Project Preview" />
       </div>
       <div className='base'>
         <div className='base__center'></div>
