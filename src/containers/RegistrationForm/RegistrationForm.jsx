@@ -66,37 +66,6 @@ const RegistrationForm = () => {
         return <Spinner />
     }
 
-    var telInput = document.querySelector("#phone");
-    // window.intlTelInput(telInput, {
-    //     separateDialCode: true,
-    //     customPlaceholder: function (
-    //         selectedCountryPlaceholder,
-    //         selectedCountryData
-    //     ) {
-    //         return selectedCountryPlaceholder;
-    //     },
-    // });
-
-    //let phoneInput =
-    // window.intlTelInput(telInput, {
-    //     preferredCountries: ["ke", "ug", "tz"],
-    //     utilsScript:
-    //         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",        
-    //     customPlaceholder: function (
-    //         selectedCountryPlaceholder,
-    //         selectedCountryData
-    //     ) {
-    //         return selectedCountryPlaceholder;
-    //     },
-    // });
-
-
-    // document.body.querySelector("#phoneNumber").addEventListener("focusout", (e) => {
-    //     const phoneNumber = phoneInput.getNumber();
-
-    //     let sendPhoneNumber = document.body.querySelector("#send");
-    //     sendPhoneNumber.value = phoneNumber;
-    // });
     return (
         <div className='app__flex registration__container'>
             <div className='registration__title app__flex'>

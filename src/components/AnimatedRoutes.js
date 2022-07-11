@@ -4,8 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import { Portfolio, Resume, Testimonial, SignUp, Login, Dashboard, Project, NotFound } from '../pages'
 
-function RequireAuth({ children }) {
-    const location = useLocation()
+function RequireAuth({ children }) {    
     const user = localStorage.getItem("user")
 
     return user !== null ? children : <Navigate to="/signin" replace />;

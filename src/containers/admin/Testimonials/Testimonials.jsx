@@ -66,7 +66,7 @@ const Testimonials = ({ token }) => {
         <div className="testimonials-list">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="testimonial-item">
-              <img src={testimonial.imageUrl ? `http://localhost:4000/${testimonial.imageUrl}` : Empty} alt="Testimonial Image" />
+              <img src={testimonial.imageUrl ? `http://localhost:4000/${testimonial.imageUrl}` : Empty} alt="Testimonial" />
               <div className='item__content'>                
                 <div className='item__name'>{testimonial.fullName}</div>
                 <div className='item__company'>{testimonial.company}</div>

@@ -4,10 +4,11 @@ import { motion } from 'framer-motion'
 //import Image from '../../assets/bruno-no-bg-2.png'
 import Image from '../../assets/IMG_6234-c-removebg.png'
 import node from '../../assets/node.png'
-import redux from '../../assets/redux.png'
+//import redux from '../../assets/redux.png'
+import react from '../../assets/react.png'
 import sass from '../../assets/sass.png'
 import Circle from '../../assets/circle.svg'
-import CircleWhite from '../../assets/bg-white.png'
+//import CircleWhite from '../../assets/bg-white.png'
 import AppWrapper from '../../hoc/AppWrapper'
 import './Introduction.scss'
 
@@ -55,16 +56,16 @@ const Introduction = () => {
                 <motion.img
                     whileInView={{ scale: [0, 1] }}
                     transition={{ duration: 1, ease: 'easeInOut' }}
-                    src={savedTheme === "light" ? Circle : CircleWhite}
+                    src={savedTheme === "light" ? Circle : Circle}
                     alt="profile_circle"
-                    className={`overlay__circle ${savedTheme === "dark" || savedTheme === null && "dark__overlay"}`}
+                    className={`overlay__circle `}
                 />
             </motion.div>
             <motion.div
                 variants={scaleVariants}
                 whileInView={scaleVariants.whileInView}
                 className="app__header-circles">
-                {[node, redux, sass].map((circle, index) => (
+                {[node, react, sass].map((circle, index) => (
                     <div className='circle-cmp app__flex' key={`circle-${index}`}>
                         <img src={circle} alt="circle" />
                     </div>

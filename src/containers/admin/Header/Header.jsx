@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logout } from '../../../features/auth/authSlice'
 
 import Logo from '../../../assets/bruno-logo-no-bg.png'
 
 const Header = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch()
 
     const handleLogout = () => {
         dispatch(logout())

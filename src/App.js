@@ -9,7 +9,9 @@ import './App.scss';
 
 function App() {
   const savedTheme = localStorage.getItem("myTheme")
-  savedTheme === null || savedTheme === 'undefined' && localStorage.setItem("myTheme", "dark")
+  if (savedTheme === null || savedTheme === 'undefined') {
+    localStorage.setItem("myTheme", "dark")
+  }
 
   const [theme, setTheme] = useState(savedTheme != null ? savedTheme : "dark");
 
@@ -18,7 +20,7 @@ function App() {
     localStorage.setItem("myTheme", theme === "light" ? "dark" : "light");
   }
 
-//  const isAuth = localStorage.getItem("token")
+  //  const isAuth = localStorage.getItem("token")
 
   return (
     <>

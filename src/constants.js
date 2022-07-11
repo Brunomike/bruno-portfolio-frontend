@@ -1,6 +1,6 @@
 import FrontEnd from './assets/front-end.jpg'
 import BackEnd from './assets/backend.jpg'
-import FullStack from './assets/full-stack.png'
+//import FullStack from './assets/full-stack.png'
 import FullStack1 from './assets/fullstack1.jpeg'
 import Html from './assets/html.png'
 import css from './assets/css.png'
