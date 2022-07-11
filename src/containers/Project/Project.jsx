@@ -72,11 +72,9 @@ const Project = ({ to, theme, handleThemeSelection ,token}) => {
                     setSkill("")
                 })
                 .catch(err => {
-                    toast.error("Filed to add new skill!")
+                    toast.error("Failed to add new skill!")
                 })
-
         }
-
     }
 
     const handleFilesInputChage = (e) => {
@@ -100,7 +98,7 @@ const Project = ({ to, theme, handleThemeSelection ,token}) => {
                                 <div className='app__section dark__section app__flex' id='project-item'>
                                     <h1>{project.title}</h1>
                                     <p>This page contains the case study of {project.title} which includes the Project Overview, Tools Used and Live Links to the official product.</p>
-                                    <a href={project.liveLink}>LIVE LINK</a>
+                                    <a href={project.liveLink} >LIVE LINK</a>
                                 </div>
                                 <div className='app__section' >
                                     <div id='project-details__content'>
@@ -134,7 +132,7 @@ const Project = ({ to, theme, handleThemeSelection ,token}) => {
                                             <div className='project-details__links project-details__item'>
                                                 <h2 className='project-details__content-title'>See Live</h2>
                                                 <div className='links'>
-                                                    <a href={project.liveLink} target="_blank" className='links__link'>LIVE LINK</a>
+                                                    <a href={project.liveLink} target="_blank" rel="noreferrer" className='links__link'>LIVE LINK</a>
                                                     <Link to={"/#projects"} className='links__link'>GO BACK</Link>
                                                 </div>
                                             </div>
@@ -202,7 +200,7 @@ const Project = ({ to, theme, handleThemeSelection ,token}) => {
                                             <div className='project-details__links project-details__item'>
                                                 <h2 className='project-details__content-title'>See Live</h2>
                                                 <div className='links'>
-                                                    <a href={project.liveLink} target="_blank" className='links__link'>LIVE LINK</a>
+                                                    <a href={project.liveLink} target="_blank" rel="noreferrer" className='links__link'>LIVE LINK</a>
                                                     <Link to={"/#projects"} className='links__link'>GO BACK</Link>
                                                 </div>
                                             </div>

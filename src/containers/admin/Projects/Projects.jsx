@@ -123,24 +123,24 @@ const Projects = ({ token }) => {
                     }
                 </div>
                 <div className=''>
-                    <form onSubmit={handleSubmit} enctype="multipart/form-data">
+                    <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <h2>Add New Project</h2>
                         <br />
-                        <FormGroup title={"Title"} type="text" name="title" placeholder="" handleChange={handleChange} value={formData.title} />
-                        <FormGroup title={"Overview"} type="text" name="overview" placeholder="" handleChange={handleChange} value={formData.overview} />
-                        <FormGroup title={"Description"} type="text" name="description" placeholder="" handleChange={handleChange} value={formData.description} />
-                        <FormGroup title={"Live Link"} type="text" name="liveLink" placeholder="" handleChange={handleChange} value={formData.liveLink} />
-                        <FormGroup title={"Code Link"} type="text" name="codeLink" placeholder="" handleChange={handleChange} value={formData.codeLink} />
-                        <label for="category">Choose Project Category</label>
-                        <select name="category" id="category" value={category} onChange={handleChange}>
+                        <FormGroup title={"Title"} type="text" name={"title"} placeholder="" handleChange={handleChange} value={formData.title} />
+                        <FormGroup title={"Overview"} type="text" name={"overview"} placeholder="" handleChange={handleChange} value={formData.overview} />
+                        <FormGroup title={"Description"} type="text" name={"description"} placeholder="" handleChange={handleChange} value={formData.description} />
+                        <FormGroup title={"Live Link"} type="text" name={"liveLink"} placeholder="" handleChange={handleChange} value={formData.liveLink} />
+                        <FormGroup title={"Code Link"} type="text" name={"codeLink"} placeholder="" handleChange={handleChange} value={formData.codeLink} />
+                        <label htmlFor="category">Choose Project Category</label>
+                        <select name={"category"} id="category" value={category} onChange={handleChange}>
                             <option value="front-end" defaultValue>Front End</option>
                             <option value="mobile">Mobile App</option>
                             <option value="back-end">Back End</option>
                             <option value="full-stack">Full Stack</option>
                         </select>
-                        <label for="uploadedImages">Project Avatar </label>
+                        <label htmlFor="uploadedImages">Project Avatar </label>
                         <input type="file" name="projectAvatar" onChange={handleAvatarChange} />
-                        <label for="uploadedImages">Project Preview </label>
+                        <label htmlFor="uploadedImages">Project Preview </label>
                         <input type="file" name="projectPreview" onChange={handlePreviewChange} />
                         <button type="submit">Submit</button>
                     </form>

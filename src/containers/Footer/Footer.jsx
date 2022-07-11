@@ -17,13 +17,13 @@ const Footer = () => {
                 <div className='footer__social'>
                     <h2 className='footer__heading'>SOCIAL </h2>
                     <div>
-                        <a href='www.linkedin.com/in/brunomike254' target='_blank'>
+                        <a href='www.linkedin.com/in/brunomike254' target='_blank' rel="noreferrer">
                             <BsLinkedin />
                         </a>
-                        <a href='https://github.com/Brunomike' target='_blank'>
+                        <a href='https://github.com/Brunomike' target='_blank' rel="noreferrer">
                             <BsGithub />
                         </a>
-                        <a href='https://twitter.com/brunomike254' target='_blank'>
+                        <a href='https://twitter.com/brunomike254' target='_blank' rel="noreferrer">
                             <BsTwitter />
                         </a>
                     </div>
