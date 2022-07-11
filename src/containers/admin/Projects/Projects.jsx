@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-import { postProject } from '../../../features/project/projectSlice'
+
 import FormGroup from '../../../components/FormGroup/FormGroup'
 import './Projects.scss'
 
@@ -18,7 +17,7 @@ const Projects = ({ token }) => {
         category: ""
     })
 
-    const { title, overview, description, liveLink, codeLink, category } = formData
+    const { title, overview, description, codeLink, category } = formData
     const [avatar, setAvatar] = useState(null)
     const [previewImage, setPreviewImage] = useState(null)
     const [projects, setProjects] = useState([])
@@ -37,10 +36,7 @@ const Projects = ({ token }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log(previewImage);
-        console.log(avatar);
-
+        
         const newFormData = new FormData();
 
         for (const name in formData) {
@@ -66,8 +62,8 @@ const Projects = ({ token }) => {
                     toast.success(data.message)
                 })
                 .catch(err => {
-                    console.log(err);
-                    console.log(err.response)
+                    // console.log(err);
+                    // console.log(err.response)
                     //toast.error(err.response.data.message)
                 })
         }

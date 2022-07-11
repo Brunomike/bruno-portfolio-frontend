@@ -4,7 +4,6 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 import FormGroup from '../../components/FormGroup/FormGroup'
-import Logo from '../../assets/bruno-logo-no-bg.png'
 import './Testimonial.scss'
 
 const Testimonial = () => {
@@ -28,7 +27,7 @@ const Testimonial = () => {
             navigate('/#contact')
             toast.error("Contact me to get valid url with token for testimonial submission!")
         }
-    }, [])
+    }, [navigate])
 
 
     const handleChange = (e) => {

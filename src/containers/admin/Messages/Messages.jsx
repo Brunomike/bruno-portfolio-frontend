@@ -20,7 +20,7 @@ const Messages = ({ token }) => {
       .then(data => {
         setMessages(data)
       })
-  }, [])
+  }, [token])
 
   const handleClick = (index) => {
     setSelectedChat(index)

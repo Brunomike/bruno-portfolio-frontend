@@ -4,7 +4,6 @@ import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 import Empty from '../../assets/empty.svg'
 import AppWrapper from '../../hoc/AppWrapper'
 import MotionWrapper from '../../hoc/MotionWrapper';
-import SampleImage from '../../assets/bruno.png'
 import './Testimonials.scss'
 
 

@@ -7,7 +7,6 @@ import axios from 'axios'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import ProjectPreview from '../../components/ProjectPreview/ProjectPreview'
-import ProjectImage from '../../assets/yubter.jpeg'
 import './Project.scss'
 
 const Project = ({ to, theme, handleThemeSelection ,token}) => {
@@ -26,7 +25,7 @@ const Project = ({ to, theme, handleThemeSelection ,token}) => {
             .then(data => {
                 setProject(data)
             })
-    }, [])
+    }, [params.id])
 
     const handleFormSubmit = (e, source) => {
         e.preventDefault()

@@ -1,9 +1,9 @@
-import React, { useState ,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify';
 
-import { login, register, logout, reset } from '../../features/auth/authSlice'
+import { login, reset } from '../../features/auth/authSlice'
 import Spinner from '../../components/Spinner/Spinner'
 import FormGroup from '../../components/FormGroup/FormGroup'
 import './LoginForm.scss'
@@ -59,7 +59,7 @@ const LoginForm = () => {
     return (
         <div className='app__flex login__container'>
             <h2>SignIn</h2>
-            <form  onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <FormGroup title={"Email Address"} type="email" name="email" placeholder="" handleChange={handleChange} value={formData.email} />
                 <FormGroup title={"Password"} type="password" name="password" placeholder="" handleChange={handleChange} value={formData.password} />
                 <p style={{ marginBottom: "10px" }}>Don't have an account? <Link to={"/signup"}>Signup</Link></p>

@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
-import { HiMenuAlt4, HiX } from 'react-icons/hi';
-import Button from '@mui/material/Button';
-import { LightModeOutlined as LightMode, DarkModeOutlined as DarkMode } from '@mui/icons-material';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react'
+import { HiMenuAlt4, HiX } from 'react-icons/hi'
+import Button from '@mui/material/Button'
+import { LightModeOutlined as LightMode, DarkModeOutlined as DarkMode } from '@mui/icons-material'
+import { motion } from 'framer-motion'
 
 import Logo from '../../assets/bruno-logo-no-bg.png'
 import DarkLogo from '../../assets/bruno-logo-dark-no-bg1.png'
 import './Header.scss';
 
 const Header = ({ theme, handleThemeSelection }) => {
-    const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(false)
 
     return (
         <nav className='app__navbar'>
@@ -77,7 +76,7 @@ const Header = ({ theme, handleThemeSelection }) => {
     )
 }
 
-export default Header;
+export default Header
 
 //<Link to="/resume">{item}</Link>
 //<Link to="/resume"  onClick={() => setToggle(false)}>{item}</Link>

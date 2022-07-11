@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Header from '../containers/Header/Header'
 import TestimonialContainer from '../containers/Testimonial/Testimonial'
 
 const Testimonial = ({ theme, handleThemeSelection }) => {
