@@ -60,8 +60,8 @@ const LoginForm = () => {
         <div className='app__flex login__container'>
             <h2>SignIn</h2>
             <form onSubmit={handleSubmit}>
-                <FormGroup title={"Email Address"} type="email" name="email" placeholder="" handleChange={handleChange} value={formData.email} />
-                <FormGroup title={"Password"} type="password" name="password" placeholder="" handleChange={handleChange} value={formData.password} />
+                <FormGroup title={"Email Address"} type="email" name={"email"} placeholder="" handleChange={handleChange} value={formData.email} />
+                <FormGroup title={"Password"} type="password" name={"password"} placeholder="" handleChange={handleChange} value={formData.password} />
                 <p style={{ marginBottom: "10px" }}>Don't have an account? <Link to={"/signup"}>Signup</Link></p>
 
                 <button type="submit">Signin</button>
