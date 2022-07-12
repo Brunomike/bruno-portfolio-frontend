@@ -35,7 +35,7 @@ function AnimatedRoutes({ theme, handleThemeSelection }) {
                         <Route path="/signin" element={<Login />} />
                 }
 
-                <Route path="*" element={< NotFound />} theme={theme} />
+                <Route path="/*" element={< NotFound />} theme={theme} />
             </Routes>
         </AnimatePresence>
     )
