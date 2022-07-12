@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
+import baseUrl from '../../constants'
 import FormGroup from '../../components/FormGroup/FormGroup'
 import './Testimonial.scss'
 
@@ -55,7 +56,7 @@ const Testimonial = () => {
             newFormData.append("uploadedImages", selectedFile, selectedFile.name)
         }
 
-        axios.post("http://localhost:4000/api/testimonials", newFormData, {
+        axios.post(baseUrl + "api/testimonials", newFormData, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

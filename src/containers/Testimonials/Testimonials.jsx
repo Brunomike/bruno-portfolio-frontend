@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
+import baseUrl from '../../constants'
 import Empty from '../../assets/empty.svg'
 import AppWrapper from '../../hoc/AppWrapper'
 import MotionWrapper from '../../hoc/MotionWrapper';
@@ -12,7 +13,7 @@ const Testimonials = () => {
     const [currentIndex, setcurrentIndex] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/testimonials')
+        fetch(baseUrl + 'api/testimonials')
             .then(res => res.json())
             .then(data => {
                 setTestimonials(data)
@@ -33,7 +34,7 @@ const Testimonials = () => {
             {testimonials.length > 0 ? (
                 <>
                     <div className='app__testimonial-item app__flex'>
-                        <img src={tst.imageUrl ? `http://localhost:4000/${tst.imageUrl}` : Empty} alt="testimonial" />
+                        <img src={tst.imageUrl ? `${baseUrl}${tst.imageUrl}` : Empty} alt="testimonial" />
                         <div className='app__testimonial-content'>
                             <p className='p-text'>{tst.feedback}</p>
                             <div>

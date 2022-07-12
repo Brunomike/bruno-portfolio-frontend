@@ -3,6 +3,7 @@ import { AiOutlineClose, AiOutlineSend } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 import axios from "axios"
 
+import baseUrl from '../../../constants'
 import './Messages.scss'
 
 const Messages = ({ token }) => {
@@ -11,7 +12,7 @@ const Messages = ({ token }) => {
   const [replyMessage, setReplyMessage] = useState("")
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/messages", {
+    axios.get(baseUrl + "api/messages", {
       headers: {
         "Authorization": `Bearer ${token}`
       }
@@ -31,7 +32,7 @@ const Messages = ({ token }) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()    
+    e.preventDefault()
 
     let body = {
       email: messages[selectedChat].email,
@@ -39,7 +40,7 @@ const Messages = ({ token }) => {
       source: "admin"
     }
 
-    axios.post("http://localhost:4000/api/messages", body, {
+    axios.post(baseUrl + "api/messages", body, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
@@ -48,10 +49,10 @@ const Messages = ({ token }) => {
       .then(res => res.data)
       .then(data => {
         console.log(data);
-        toast.success("Message sent!")        
+        toast.success("Message sent!")
         setReplyMessage("")
       })
-      .catch(err => {        
+      .catch(err => {
         toast.error("Failed to send message")
       })
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
 import Header from '../containers/admin/Header/Header'
 import Sidebar from '../components/Sidebar/Sidebar'
@@ -12,7 +13,12 @@ import Experience from '../containers/admin/Experience/Experience'
 
 const Dashboard = ({ main }) => {
     const { user } = useSelector((state) => state.auth)
+    let isAuthenticated = localStorage.getItem("isAuthenticated")
 
+    if (!isAuthenticated) {
+        return <Navigate to="/signin" />
+    }
+    
     return (
         <div className='app__dashboard'>
             <Header />
@@ -31,6 +37,8 @@ const Dashboard = ({ main }) => {
             </div>
         </div>
     )
+
+
 }
 
 export default Dashboard

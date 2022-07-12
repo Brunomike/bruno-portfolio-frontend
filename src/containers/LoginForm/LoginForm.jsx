@@ -25,7 +25,11 @@ const LoginForm = () => {
             toast.error(message);
         }
         if (isSuccess || user) {
-            navigate('/dashboard');
+            setTimeout(() => {
+                navigate('/dashboard'); 
+            }, 100);
+        } else {
+            navigate('/signin');
         }
 
         dispatch(reset());

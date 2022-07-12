@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { AiFillEye, AiFillGithub } from 'react-icons/ai'
 import { motion } from 'framer-motion';
 
+import baseUrl from '../../constants'
 import AppWrapper from '../../hoc/AppWrapper'
 import MotionWrapper from '../../hoc/MotionWrapper'
 import './Projects.scss'
@@ -15,7 +16,7 @@ const Projects = () => {
     const [filterProjects, setFilterProjects] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:4000/api/projects")
+        axios.get(baseUrl + "api/projects")
             .then((res) => res.data.data)
             .then(data => {
                 setProjects(data);

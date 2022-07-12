@@ -8,6 +8,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import ProjectPreview from '../../components/ProjectPreview/ProjectPreview'
 import './Project.scss'
+import baseUrl from '../../constants'
 
 const Project = ({ to, theme, handleThemeSelection, token }) => {
     const [project, setProject] = useState(null)
@@ -20,7 +21,7 @@ const Project = ({ to, theme, handleThemeSelection, token }) => {
     }, [])
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/api/projects/${params.id}`)
+        axios.get(`${baseUrl}api/projects/${params.id}`)
             .then(res => res.data.data)
             .then(data => {
                 setProject(data)
@@ -38,7 +39,7 @@ const Project = ({ to, theme, handleThemeSelection, token }) => {
                 formData.append("uploadedImages", file, file.name)
             });
 
-            axios.post("http://localhost:4000/api/images", formData, {
+            axios.post(baseUrl + "api/images", formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -57,7 +58,7 @@ const Project = ({ to, theme, handleThemeSelection, token }) => {
                 projectUUID: project.uuid,
                 tag: skill
             }
-            axios.post("http://localhost:4000/api/projects/tags", data, {
+            axios.post(baseUrl + "api/projects/tags", data, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -111,7 +112,7 @@ const Project = ({ to, theme, handleThemeSelection, token }) => {
                                             <h2 className='project-details__content-title'>Project Description</h2>
                                             <p>{project.description}</p>
                                         </div>
-                                        <div className='project-details__tools project-details__item'>
+                                        <div className='prfoject-details__tools project-details__item'>
                                             <h2 className='project-details__content-title'>Tools Used</h2>
 
                                             <div className="skills">

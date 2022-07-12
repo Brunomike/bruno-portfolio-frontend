@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
+import baseUrl from '../../../constants'
 import Empty from '../../../assets/empty.svg'
 import FormGroup from "../../../components/FormGroup/FormGroup"
 import "./Testimonials.scss"
+
 
 const Testimonials = ({ token }) => {
   const [formData, setFormData] = useState({
@@ -16,7 +18,7 @@ const Testimonials = ({ token }) => {
   const [testimonials, setTestimonials] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:4000/api/testimonials")
+    axios.get(baseUrl + "api/testimonials")
       .then(res => res.data)
       .then(data => {
         setTestimonials(data)
@@ -37,7 +39,7 @@ const Testimonials = ({ token }) => {
     if (email === "" || fullName === "" || title === "") {
       toast.error("All fields are required!")
     } else {
-      axios.post("http://localhost:4000/api/testimonials/send", formData, {
+      axios.post(baseUrl + "api/testimonials/send", formData, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -66,8 +68,8 @@ const Testimonials = ({ token }) => {
         <div className="testimonials-list">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="testimonial-item">
-              <img src={testimonial.imageUrl ? `http://localhost:4000/${testimonial.imageUrl}` : Empty} alt="Testimonial" />
-              <div className='item__content'>                
+              <img src={testimonial.imageUrl ? `${baseUrl}${testimonial.imageUrl}` : Empty} alt="Testimonial" />
+              <div className='item__content'>
                 <div className='item__name'>{testimonial.fullName}</div>
                 <div className='item__company'>{testimonial.company}</div>
               </div>

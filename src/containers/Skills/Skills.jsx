@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 
 import AppWrapper from '../../hoc/AppWrapper'
 import MotionWrapper from '../../hoc/MotionWrapper'
-import { skills } from '../../constants'
+import baseUrl, { skills } from '../../constants'
 import './Skills.scss'
 
 const Skills = () => {
-    const [experiences, setExperiences] = useState([])
+    const [experiences, setExperiences] = useState([])    
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/experiences')
+        fetch(baseUrl + 'api/experiences')
             .then(res => res.json())
             .then(data => {
                 setExperiences(data);

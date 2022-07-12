@@ -4,6 +4,7 @@ import { MdEmail } from 'react-icons/md'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
+import baseUrl from '../../constants'
 import MotionWrapper from '../../hoc/MotionWrapper'
 import AppWrapper from '../../hoc/AppWrapper'
 import './Contact.scss'
@@ -30,14 +31,13 @@ const Contact = ({token}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:4000/api/messages", formData, {
+        axios.post(baseUrl+"api/messages", formData, {
             headers: {
                 "Content-Type": "application/json",                
             },
         })
             .then(res => res.data)
-            .then(data => {
-                console.log(data);
+            .then(data => {                
                 setFormData({ fullName: "", email: "", message: "" })
                 toast.success(data.message)
             })

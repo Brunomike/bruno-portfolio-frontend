@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-
+import baseUrl from '../../../constants'
 import FormGroup from '../../../components/FormGroup/FormGroup'
 import './Projects.scss'
 
@@ -21,13 +21,9 @@ const Projects = ({ token }) => {
     const [avatar, setAvatar] = useState(null)
     const [previewImage, setPreviewImage] = useState(null)
     const [projects, setProjects] = useState([])
-    //const { projects, isLoading, isError, isSuccess, message } = useSelector((state) => state.project)
-
-    //const dispatch =useDispatch()
-
 
     useEffect(() => {
-        axios.get("http://localhost:4000/api/projects")
+        axios.get(baseUrl + "api/projects")
             .then(data => {
                 setProjects(data.data.data)
             })
@@ -36,7 +32,7 @@ const Projects = ({ token }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const newFormData = new FormData();
 
         for (const name in formData) {
@@ -51,7 +47,7 @@ const Projects = ({ token }) => {
             newFormData.append('uploadedImages', previewImage, previewImage.name)
             newFormData.append('uploadedImages', avatar, avatar.name)
 
-            axios.post("http://localhost:4000/api/projects", newFormData, {
+            axios.post(baseUrl + "api/projects", newFormData, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -107,7 +103,7 @@ const Projects = ({ token }) => {
                         projects.map((project, index) => (
                             <Link to={`/dashboard/projects/${project.id}`} key={`${index}`}>
                                 <div className='card project__item'>
-                                    <img src={`http://localhost:4000/${project.imageUrl.replace('\\', '/')}`} alt={project.title} />
+                                    <img src={`${baseUrl}${project.imageUrl.replace('\\', '/')}`} alt={project.title} />
                                     <div className='project__content'>
                                         <h3>{project.title}</h3>
                                         <p>{project.overview}</p>

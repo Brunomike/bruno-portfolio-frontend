@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 
 import FormGroup from '../../../components/FormGroup/FormGroup'
 import "./Experience.scss"
+import baseUrl from '../../../constants'
 
 const Experience = ({ token }) => {
     const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const Experience = ({ token }) => {
     const { year, role, position, organization, start, end } = formData
 
     useEffect(() => {
-        axios.get("http://localhost:4000/api/experiences")
+        axios.get(baseUrl + "api/experiences")
             .then(res => res.data)
             .then(data => {
                 setExperiences(data)
@@ -42,7 +43,7 @@ const Experience = ({ token }) => {
         if (year === "" || role === "" || position === "" || organization === "" || start === "" || end === "") {
             toast.error("All fields are required!")
         } else {
-            axios.post("http://localhost:4000/api/experiences", formData, {
+            axios.post(baseUrl + "api/experiences", formData, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
