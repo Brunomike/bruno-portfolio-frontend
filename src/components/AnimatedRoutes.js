@@ -14,25 +14,25 @@ function AnimatedRoutes({ theme, handleThemeSelection }) {
         <AnimatePresence>
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Portfolio theme={theme} handleThemeSelection={handleThemeSelection} />} />
-                <Route path="resume" element={<Resume theme={theme} handleThemeSelection={handleThemeSelection} />} />
-                <Route path="project/:id" element={<Project to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
-                <Route path="testimonial" element={<Testimonial to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
-                <Route path="signup" element={<SignUp />} />
-                <Route path="signin" element={<Login />} />
+                <Route path="/resume" element={<Resume theme={theme} handleThemeSelection={handleThemeSelection} />} />
+                <Route path="/project/:id" element={<Project to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
+                <Route path="/testimonial" element={<Testimonial to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/signin" element={<Login />} />
 
                 {
                     isAuthenticated ? (
                         <>
-                            <Route path="dashboard" element={<Dashboard main="home" user={user} />} />
-                            <Route path="dashboard/projects" element={<Dashboard main="projects" user={user} />} />
-                            <Route path="dashboard/projects/:id" element={<Dashboard main="project" user={user} />} />
-                            <Route path="dashboard/messages" element={<Dashboard main="messages" user={user} />} />
-                            <Route path="dashboard/experiences" element={<Dashboard main="experiences" user={user} />} />
-                            <Route path="dashboard/testimonials" element={<Dashboard main="testimonials" user={user} />} />
+                            <Route path="/dashboard" element={<Dashboard main="home" user={user} />} />
+                            <Route path="/dashboard/projects" element={<Dashboard main="projects" user={user} />} />
+                            <Route path="/dashboard/projects/:id" element={<Dashboard main="project" user={user} />} />
+                            <Route path="/dashboard/messages" element={<Dashboard main="messages" user={user} />} />
+                            <Route path="/dashboard/experiences" element={<Dashboard main="experiences" user={user} />} />
+                            <Route path="/dashboard/testimonials" element={<Dashboard main="testimonials" user={user} />} />
                         </>
                     )
                         :
-                        <Route path="signin" element={<Login />} />
+                        <Route path="/signin" element={<Login />} />
                 }
 
                 <Route path="*" element={< NotFound />} theme={theme} />
