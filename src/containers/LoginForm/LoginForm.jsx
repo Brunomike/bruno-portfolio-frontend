@@ -17,21 +17,20 @@ const LoginForm = () => {
     const { email, password } = formData
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (isError) {
-            toast.error(message);
+            toast.error(message)            
         }
         if (isSuccess || user) {
-            setTimeout(() => {
-                navigate('/dashboard');
-            }, 1000);
+            navigate('/dashboard')
         }
 
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
+
 
     useEffect(() => {
         if (isSuccess) {
@@ -51,12 +50,12 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (email === '' || password === '') {
-            toast.error('All fields are required!');
+            toast.error('All fields are required!')
         } else {
             const userData = {
                 email, password
             }
-            dispatch(login(userData));
+            dispatch(login(userData))
         }
     }
 

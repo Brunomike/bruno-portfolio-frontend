@@ -34,14 +34,17 @@ const RegistrationForm = () => {
             toast.error(message)
         }
         if (isSuccess || user) {
-            toast.success('Registration Successful')
-            setTimeout(() => {
-                navigate('/signin');
-            }, 1000);
+            navigate('/signin');
         }
 
         dispatch(reset());
     }, [user, isError, isSuccess, message, dispatch, navigate])
+
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success('Registration Successful')
+        }
+    }, [isSuccess])
 
 
     const handleChange = (e) => {
