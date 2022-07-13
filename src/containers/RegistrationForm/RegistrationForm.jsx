@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import baseUrl from '../../constants';
+
 import Spinner from '../../components/Spinner/Spinner';
 import Logo from '../../assets/bruno-logo-no-bg.png'
 import FormGroup from '../../components/FormGroup/FormGroup'
@@ -65,9 +65,9 @@ const RegistrationForm = () => {
         }
     }
 
-    // if (isLoading) {
-    //     return <Spinner />
-    // }
+    if (isLoading) {
+        return <Spinner />
+    }
 
     return (
         <div className='app__flex registration__container'>

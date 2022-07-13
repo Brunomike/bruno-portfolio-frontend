@@ -17,7 +17,7 @@ function AnimatedRoutes({ theme, handleThemeSelection }) {
                 <Route path="resume" element={<Resume theme={theme} handleThemeSelection={handleThemeSelection} />} />
                 <Route path="project/:id" element={<Project to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
                 <Route path="testimonial" element={<Testimonial to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
-                <Route path="signin" element={<Login />} />
+                <Route path="w" element={<Login />} />
                 <Route path="signup" element={<SignUp />} />
 
                 
