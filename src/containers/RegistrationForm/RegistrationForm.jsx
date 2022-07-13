@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import baseUrl from '../../constants';
 import Spinner from '../../components/Spinner/Spinner';
 import Logo from '../../assets/bruno-logo-no-bg.png'
 import FormGroup from '../../components/FormGroup/FormGroup'
@@ -33,11 +34,14 @@ const RegistrationForm = () => {
             toast.error(message)
         }
         if (isSuccess || user) {
-            navigate('/signin')
+            toast.success('Registration Successful')
+            setTimeout(() => {
+                navigate('/signin');
+            }, 1000);
         }
 
         dispatch(reset());
-    }, [user, isError, isSuccess, message, navigate, dispatch])
+    }, [user, isError, isSuccess, message, dispatch, navigate])
 
 
     const handleChange = (e) => {
@@ -59,12 +63,11 @@ const RegistrationForm = () => {
             }
             dispatch(register(userData))
         }
-
     }
 
-    if (isLoading) {
-        return <Spinner />
-    }
+    // if (isLoading) {
+    //     return <Spinner />
+    // }
 
     return (
         <div className='app__flex registration__container'>

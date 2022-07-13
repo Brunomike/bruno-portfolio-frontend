@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, Navigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { toast } from 'react-toastify';
 
@@ -26,14 +26,18 @@ const LoginForm = () => {
         }
         if (isSuccess || user) {
             setTimeout(() => {
-                navigate('/dashboard'); 
-            }, 100);
-        } else {
-            navigate('/signin');
+                navigate('/dashboard');
+            }, 1000);
         }
 
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+    useEffect(() => {
+        if (isSuccess) {
+            toast.success('Login Successful');
+        }
+    }, [isSuccess])
 
 
     const handleChange = (e) => {
