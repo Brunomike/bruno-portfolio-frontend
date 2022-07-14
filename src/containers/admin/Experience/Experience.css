@@ -5,72 +5,49 @@
   padding: 1rem;
   overflow-y: auto;
 }
-
 #experiences-page .experience-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-bottom: 16px;
 }
-
 #experiences-page .experience-list .list__experience-item {
   background-color: #fff;
   padding: 1rem;
   border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 16px;
   margin-right: 16px;
 }
-
 #experiences-page .experience-list .list__experience-item .item__year {
   color: #313bac;
   font-weight: 800;
 }
-
 #experiences-page .experience-list .list__experience-item .item__contents {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 8px;
 }
-
 #experiences-page .experience-list .list__experience-item .item__contents .item__content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 8px;
   font-size: 1rem;
   font-weight: 600;
 }
-
 #experiences-page .experience-list .list__experience-item .item__contents .item__content .item__company {
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 400;
 }
-
 #experiences-page form {
   background-color: #fff;
   padding: 1rem 2rem;
   border-radius: 5px;
   width: 70%;
 }
-
 #experiences-page form h2 {
   margin-bottom: 8px;
 }
-
 #experiences-page form button {
   outline: none;
   border: none;
@@ -79,27 +56,20 @@
   display: inline-block;
   font-weight: 700;
   border-radius: 5px;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
   text-decoration: none;
   background-color: var(--primaryColor);
-  padding: .7rem 2rem;
-  font-size: .9rem;
+  padding: 0.7rem 2rem;
+  font-size: 0.9rem;
   color: #fff;
   margin-top: 1rem;
 }
-
 #experiences-page form button:hover {
   cursor: pointer;
-  -webkit-box-shadow: var(--mainBoxShadow);
-          box-shadow: var(--mainBoxShadow);
+  box-shadow: var(--mainBoxShadow);
 }
-
 @media screen and (max-width: 500px) {
   #experiences-page form {
     width: 90%;
   }
-}
-/*# sourceMappingURL=Experience.css.map */
+}/*# sourceMappingURL=Experience.css.map */

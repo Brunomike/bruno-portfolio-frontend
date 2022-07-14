@@ -1,29 +1,20 @@
 .projects__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   gap: 16px;
 }
-
 .projects__container form {
   background-color: #fff;
   max-width: 500px;
   padding: 1rem;
 }
-
 .projects__container form label {
   display: block;
   margin-bottom: 8px;
 }
-
 .projects__container form select {
   margin-bottom: 16px;
 }
-
 .projects__container form button {
   outline: none;
   border: none;
@@ -32,46 +23,32 @@
   display: inline-block;
   font-weight: 700;
   border-radius: 5px;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
   text-decoration: none;
   background-color: var(--primaryColor);
-  padding: .7rem 2rem;
-  font-size: .9rem;
+  padding: 0.7rem 2rem;
+  font-size: 0.9rem;
   color: #fff;
-  margin-top: .4rem;
+  margin-top: 0.4rem;
 }
-
 .projects__container form button:hover {
   cursor: pointer;
-  -webkit-box-shadow: var(--mainBoxShadow);
-          box-shadow: var(--mainBoxShadow);
+  box-shadow: var(--mainBoxShadow);
 }
-
 .projects__container .projects__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 8px;
 }
-
 .projects__container .projects__list a {
   text-decoration: none;
   color: inherit;
 }
-
 .projects__container .projects__list a .project__item {
   min-width: 280px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 8px;
 }
-
 .projects__container .projects__list a .project__item img {
   width: 150px;
   height: 150px;
@@ -79,18 +56,25 @@
   -o-object-fit: contain;
      object-fit: contain;
 }
-
+.projects__container .projects__list a .project__item .project__content {
+  position: relative;
+}
 .projects__container .projects__list a .project__item .project__content .project__tags {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 4px;
 }
-
 .projects__container .projects__list a .project__item .project__content .project__tags .project__tag {
-  background-color: #beb9b9;
+  background-color: rgb(190, 185, 185);
   padding: 2px 4px;
 }
-/*# sourceMappingURL=Projects.css.map */
+.projects__container .projects__list a .project__item .project__content svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: tomato;
+}
+.projects__container .projects__list a .project__item .project__content svg:hover {
+  cursor: pointer;
+  color: red;
+}/*# sourceMappingURL=Projects.css.map */

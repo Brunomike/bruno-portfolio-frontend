@@ -1,9 +1,7 @@
 .form-group {
   margin-bottom: 1rem;
 }
-
-.form-group span {
+.form-group label {
   display: block;
-  margin-bottom: .3rem;
-}
-/*# sourceMappingURL=FormGroup.css.map */
+  margin-bottom: 0.3rem;
+}/*# sourceMappingURL=FormGroup.css.map */

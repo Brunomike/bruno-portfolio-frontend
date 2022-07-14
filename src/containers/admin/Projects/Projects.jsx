@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { BsFillTrashFill } from 'react-icons/bs'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
@@ -38,7 +39,6 @@ const Projects = ({ token }) => {
         for (const name in formData) {
             newFormData.append(name, formData[name]);
         }
-        //previewImage !== null || avatar !== null ||
 
         if (title === "" || overview === "" || description === "" || codeLink === "" || category === "") {
             toast.error("All fields are required!")
@@ -58,11 +58,29 @@ const Projects = ({ token }) => {
                     toast.success(data.message)
                 })
                 .catch(err => {
-                    // console.log(err);
-                    // console.log(err.response)
-                    //toast.error(err.response.data.message)
+                    //console.log(err.response)
+                    toast.error(err.response.data.message)
                 })
         }
+    }
+
+    const handleDelete = (e, id) => {
+        e.preventDefault()
+        axios.delete(baseUrl + "api/projects/" + id, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(res => res.data)
+            .then(data => {
+                clear()
+                let newProjects = projects.filter(project => project.id !== id)
+                setProjects(newProjects)
+                toast.success(data.message)
+            })
+            .catch(err => {
+                toast.error(err.response.data.message)
+            })
     }
 
     const clear = () => {
@@ -84,14 +102,11 @@ const Projects = ({ token }) => {
         }))
     }
 
-
     const handleAvatarChange = (e) => {
-        console.log(e.target.files);
         setAvatar(e.target.files[0])
     }
 
-    const handlePreviewChange = (e, index) => {
-        console.log(e.target.files);
+    const handlePreviewChange = (e) => {
         setPreviewImage(e.target.files[0])
     }
 
@@ -112,6 +127,7 @@ const Projects = ({ token }) => {
                                                 <div className='project__tag' key={`${index}-`}>{tag.name}</div>
                                             ))}
                                         </div>
+                                        <BsFillTrashFill onClick={(e) => handleDelete(e, project.id)} />
                                     </div>
                                 </div>
                             </Link>

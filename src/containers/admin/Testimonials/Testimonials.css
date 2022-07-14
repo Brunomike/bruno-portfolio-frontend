@@ -5,11 +5,12 @@
   padding: 1rem;
   overflow-y: auto;
 }
-
 #admin-testimonial .testimonials-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-bottom: 16px;
 }
-
 #admin-testimonial .testimonials-list .testimonial-item {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -18,49 +19,39 @@
   background-color: #fff;
   border-radius: 5px;
   padding: 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 8px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
+  margin-bottom: 8px;
 }
-
 #admin-testimonial .testimonials-list .testimonial-item img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
 }
-
 #admin-testimonial .testimonials-list .testimonial-item .item__content .item__feedback {
   font-size: 1.25rem;
   line-height: 2rem;
   color: #000;
 }
-
 #admin-testimonial .testimonials-list .testimonial-item .item__content .item__name {
   font-weight: 600;
   margin-top: 1rem;
   color: #313bac;
 }
-
 #admin-testimonial .testimonials-list .testimonial-item .item__content .item__company {
   font-weight: 400;
   color: var(--gray-color);
   margin-top: 5px;
 }
-
 #admin-testimonial form {
   background-color: #fff;
   border-radius: 5px;
   padding: 1rem;
 }
-
 #admin-testimonial form h2 {
   margin-bottom: 8px;
 }
-
 #admin-testimonial form button {
   outline: none;
   border: none;
@@ -69,21 +60,15 @@
   display: inline-block;
   font-weight: 700;
   border-radius: 5px;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
   text-decoration: none;
   background-color: var(--primaryColor);
-  padding: .7rem 2rem;
-  font-size: .9rem;
+  padding: 0.7rem 2rem;
+  font-size: 0.9rem;
   color: #fff;
-  margin-top: .4rem;
+  margin-top: 0.4rem;
 }
-
 #admin-testimonial form button:hover {
   cursor: pointer;
-  -webkit-box-shadow: var(--mainBoxShadow);
-          box-shadow: var(--mainBoxShadow);
-}
-/*# sourceMappingURL=Testimonials.css.map */
+  box-shadow: var(--mainBoxShadow);
+}/*# sourceMappingURL=Testimonials.css.map */

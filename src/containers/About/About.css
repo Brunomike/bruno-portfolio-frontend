@@ -1,48 +1,29 @@
 section.about {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
 }
-
 section.about h2 {
   font-size: 2.5rem;
   color: var(--mainText);
 }
-
 section.about div {
   gap: 20px;
 }
-
 section.about div div {
   padding: 8px;
-  -webkit-box-flex: 0.5;
-      -ms-flex: 0.5;
-          flex: 0.5;
+  flex: 0.5;
 }
-
 section.about div div h3 {
   color: var(--mainText);
   padding: 8px 0;
 }
-
 section.about div div p {
   color: var(--gray-color);
 }
-
 section.about div div a {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 220px;
   margin-top: 2rem;
   color: #fff;
@@ -51,26 +32,16 @@ section.about div div a {
   text-decoration: none;
   border-radius: 5px;
 }
-
 section.about div div .about__roles {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 section.about div div .about__roles .role {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 8px;
 }
-
 section.about div div .about__roles .role img {
   width: 170px;
   height: 100%;
@@ -78,30 +49,18 @@ section.about div div .about__roles .role img {
      object-fit: contain;
   border-radius: 15px;
 }
-
 section.about div div .about__roles .role .role__content {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   width: 100%;
 }
-
 section.about div div .about__roles .role .role__content h4 {
   color: var(--mainText);
 }
-
 section.about div div .skills {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-
 section.about div div .skills .skills__skill {
   padding: 0.5rem 1rem;
   margin-bottom: 1.5rem;
@@ -113,13 +72,8 @@ section.about div div .skills .skills__skill {
   color: #777;
   max-width: 150px;
 }
-
 @media screen and (max-width: 800px) {
   section.about div {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
-}
-/*# sourceMappingURL=About.css.map */
+}/*# sourceMappingURL=About.css.map */

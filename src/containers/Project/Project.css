@@ -1,17 +1,9 @@
 #project-item {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 32px;
 }
-
 #project-item h1 {
   font-size: 2.5rem;
   text-transform: uppercase;
@@ -20,7 +12,6 @@
   color: var(--mainText);
   font-weight: 700;
 }
-
 #project-item p {
   color: var(--gray-color);
   font-size: 1.2rem;
@@ -28,7 +19,6 @@
   width: 70%;
   line-height: 1.6;
 }
-
 #project-item a {
   text-decoration: none;
   color: #fff;
@@ -38,19 +28,13 @@
   display: inline-block;
   font-weight: 700;
   border-radius: 5px;
-  padding: .7rem 5rem;
+  padding: 0.7rem 5rem;
   font-size: 1.2rem;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
 }
-
 #project-item a:hover {
-  -webkit-box-shadow: var(--mainBoxShadow);
-          box-shadow: var(--mainBoxShadow);
-  -webkit-transform: translateY(-3px);
-          transform: translateY(-3px);
+  box-shadow: var(--mainBoxShadow);
+  transform: translateY(-3px);
 }
 
 .project-details__content-title {
@@ -65,52 +49,35 @@
   max-width: 120rem;
   margin: auto;
   width: 92%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 #project-details__content img {
   width: 100%;
   background-color: transparent;
 }
-
 #project-details__content .project-details__content-main {
   width: 100%;
   max-width: 70rem;
 }
-
 #project-details__content .project-details__content-main p {
   color: var(--gray-color);
 }
-
 #project-details__content .project-details__item {
   margin-bottom: 4rem;
 }
 
 .skills {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-
 .skills .skills__skill {
-  padding: .7rem 1.5rem;
+  padding: 0.7rem 1.5rem;
   margin-bottom: 1.5rem;
   margin-right: 1.5rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background: rgba(153, 153, 153, 0.2);
   border-radius: 5px;
   font-weight: 600;
@@ -123,22 +90,16 @@
   display: inline-block;
   font-weight: 700;
   border-radius: 5px;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
   text-decoration: none;
   background-color: var(--primaryColor);
-  padding: .7rem 2rem;
-  font-size: .9rem;
+  padding: 0.7rem 2rem;
+  font-size: 0.9rem;
   color: #fff;
 }
-
 .links .links__link:hover {
-  -webkit-transform: translateY(-3px);
-          transform: translateY(-3px);
+  transform: translateY(-3px);
 }
-
 .links .links__link:last-child {
   background-color: #fff;
   border: 2px solid var(--primaryColor);
@@ -150,12 +111,10 @@
   height: 100%;
   overflow-y: scroll;
 }
-
 .admin-project__container form {
   background-color: #fff;
   padding: 1rem;
 }
-
 .admin-project__container form button {
   outline: none;
   border: none;
@@ -164,21 +123,15 @@
   display: inline-block;
   font-weight: 700;
   border-radius: 5px;
-  -webkit-transition: -webkit-transform 0.3s ease-in;
-  transition: -webkit-transform 0.3s ease-in;
   transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in;
   text-decoration: none;
   background-color: var(--primaryColor);
-  padding: .7rem 2rem;
-  font-size: .9rem;
+  padding: 0.7rem 2rem;
+  font-size: 0.9rem;
   color: #fff;
   margin-top: 1rem;
 }
-
 .admin-project__container form button:hover {
   cursor: pointer;
-  -webkit-box-shadow: var(--mainBoxShadow);
-          box-shadow: var(--mainBoxShadow);
-}
-/*# sourceMappingURL=Project.css.map */
+  box-shadow: var(--mainBoxShadow);
+}/*# sourceMappingURL=Project.css.map */

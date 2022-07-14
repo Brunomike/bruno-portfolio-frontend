@@ -34,7 +34,7 @@ const RegistrationForm = () => {
             toast.error(message)
         }
         if (isSuccess || user) {
-            navigate('/signin');
+            navigate('/signin')
         }
 
         dispatch(reset());
