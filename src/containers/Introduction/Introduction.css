@@ -26,9 +26,15 @@ section.home .intro__photo .overlay__circle {
   height: 90%;
 }
 section.home .intro__photo .dark__overlay {
-  border-top-left-radius: 300px;
-  border-bottom-left-radius: 300px;
-  border-bottom-right-radius: 300px;
+  position: absolute;
+  left: 40px;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 80%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 50%;
 }
 @media screen and (max-width: 1200px) {
   section.home .intro__photo {

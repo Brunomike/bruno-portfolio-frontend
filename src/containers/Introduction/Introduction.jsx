@@ -52,14 +52,21 @@ const Introduction = () => {
                 className='intro__photo'
             >
                 <img src={Image} alt="Michael Bruno" />
-
-                <motion.img
-                    whileInView={{ scale: [0, 1] }}
-                    transition={{ duration: 1, ease: 'easeInOut' }}
-                    src={savedTheme === "light" ? Circle : Circle}
-                    alt="profile_circle"
-                    className={`overlay__circle `}
-                />
+                {savedTheme === "light" ?
+                    <motion.img
+                        whileInView={{ scale: [0, 1] }}
+                        transition={{ duration: 1, ease: 'easeInOut' }}
+                        src={savedTheme === "light" ? Circle : Circle}
+                        alt="profile_circle"
+                        className={`overlay__circle`}  />
+                :
+                    <motion.div
+                        whileInView={{ scale: [0, 1] }}
+                        transition={{ duration: 1, ease: 'easeInOut' }}
+                        className={`dark__overlay`}  />
+            }
+               
+              
             </motion.div>
             <motion.div
                 variants={scaleVariants}

@@ -1,6 +1,5 @@
 section.home {
-    flex: 1;
-    // padding: 6rem 2rem 0;
+    flex: 1;    
     align-items: center;
 
 
@@ -30,9 +29,15 @@ section.home {
         }
 
         .dark__overlay {
-            border-top-left-radius: 300px;
-            border-bottom-left-radius: 300px;
-            border-bottom-right-radius: 300px;
+            position: absolute;
+            left: 40px;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            width: 80%;
+            height: 90%;
+            background-color: #fff;
+            border-radius: 50%;
         }
 
         @media screen and (max-width: 1200px) {
