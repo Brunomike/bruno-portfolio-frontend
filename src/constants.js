@@ -13,8 +13,8 @@ import git from './assets/git.png'
 import grahpql from './assets/graphql.png'
 import typescript from './assets/typescript.png'
 
-let baseUrl="http://localhost:4000/"
-process.env.NODE_ENV === 'production' ? baseUrl="https://michaelbruno.herokuapp.com/" : baseUrl="http://localhost:4000/"
+let baseUrl = "http://localhost:4000/"
+process.env.NODE_ENV === 'production' ? baseUrl = process.env.PROD_URL : baseUrl = "http://localhost:4000/"
 export default baseUrl
 
 export const roles = [
@@ -59,7 +59,7 @@ export const skills = [
         title: "Typescript",
         logo: typescript
     },
-   
+
     {
         title: "React",
         logo: react
@@ -117,30 +117,30 @@ export const experiences = [
 
 export const projects = [
     {
-        tags: ["Full-stack","Mobile App"],
+        tags: ["Full-stack", "Mobile App"],
         name: "E-Progression",
         title: "E-Progression",
         description: "A modern system that allows parents monitor their students perfomance through an android application",
         projectLink: "#",
         codeLink: "#",
-        imgUrl:FrontEnd
+        imgUrl: FrontEnd
     },
     {
         tags: ["Mobile App"],
         name: "E-commerce",
-        title: "E-commerce",        
+        title: "E-commerce",
         description: "A modern system that allows parents monitor their students perfomance through an android application",
         projectLink: "#",
         codeLink: "#",
-        imgUrl:FullStack1
+        imgUrl: FullStack1
     },
     {
-        tags: ["Web App","Mobile App"],
+        tags: ["Web App", "Mobile App"],
         name: "E-Progression",
         title: "E-Progression",
         description: "A modern system that allows parents monitor their students perfomance through an android application",
         projectLink: "#",
         codeLink: "#",
-        imgUrl:BackEnd
+        imgUrl: BackEnd
     },
 ]
