@@ -18,8 +18,8 @@ const Projects = () => {
     useEffect(() => {
         axios.get(baseUrl + "api/projects")
             .then((res) => res.data.data)
-            .then(data => {
-                setProjects(data);
+            .then(data => {                
+                setProjects(data)
                 setFilterProjects(data);
             }).catch(err => {
                 console.log(err);

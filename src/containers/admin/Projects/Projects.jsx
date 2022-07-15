@@ -58,8 +58,10 @@ const Projects = ({ token }) => {
                     toast.success(data.message)
                 })
                 .catch(err => {
-                    if (err.response.data.message) {
-                        toast.error(err.response.data.message)
+                    if (err.response.data) {
+                        console.log(err.response.data);
+                        toast.error("Something went wrong!")
+                        //toast.error(err.response.data.message)
                     } else {
                         console.log({ error: err })
                         console.log(err.response)
@@ -151,7 +153,7 @@ const Projects = ({ token }) => {
                         <label htmlFor="category">Choose Project Category</label>
                         <select name={"category"} id="category" value={category} onChange={handleChange}>
                             <option value="front-end" defaultValue>Front End</option>
-                            <option value="mobile">Mobile App</option>
+                            <option value="mobile app">Mobile App</option>
                             <option value="back-end">Back End</option>
                             <option value="full-stack">Full Stack</option>
                         </select>
