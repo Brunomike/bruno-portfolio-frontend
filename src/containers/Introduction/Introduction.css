@@ -27,7 +27,7 @@ section.home .intro__photo .overlay__circle {
 }
 section.home .intro__photo .dark__overlay {
   position: absolute;
-  left: 40px;
+  left: 50px;
   right: 0;
   bottom: 0;
   z-index: 0;

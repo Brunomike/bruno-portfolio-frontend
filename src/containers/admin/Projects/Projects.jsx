@@ -58,8 +58,13 @@ const Projects = ({ token }) => {
                     toast.success(data.message)
                 })
                 .catch(err => {
-                    //console.log(err.response)
-                    toast.error(err.response.data.message)
+                    if (err.response.data.message) {
+                        toast.error(err.response.data.message)
+                    } else {
+                        console.log({ error: err })
+                        console.log(err.response)
+                        toast.error("Something went wrong!")
+                    }
                 })
         }
     }
