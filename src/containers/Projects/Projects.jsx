@@ -20,26 +20,21 @@ const Projects = () => {
             .then((res) => res.data.data)
             .then(data => {                
                 setProjects(data)
-                setFilterProjects(data);
-            }).catch(err => {
-                console.log(err);
-            })
-
-        // setProjects(projectsArray);
-        // setFilterProjects(projectsArray);
+                setFilterProjects(data)
+            })        
     }, []);
 
     const handleProjectFilter = (item) => {
-        setActiveFilter(item);
-        setAnimateCard([{ y: 100, opacity: 0 }]);
+        setActiveFilter(item)
+        setAnimateCard([{ y: 100, opacity: 0 }])
         setTimeout(() => {
-            setAnimateCard([{ y: 0, opacity: 1 }]);
+            setAnimateCard([{ y: 0, opacity: 1 }])
             if (item === 'All') {
-                setFilterProjects(projects);
+                setFilterProjects(projects)
             } else {
-                setFilterProjects(projects.filter((project) => project.category.toLowerCase() === item.toLowerCase()));
+                setFilterProjects(projects.filter((project) => project.category.toLowerCase() === item.toLowerCase()))
             }
-        }, 500);
+        }, 500)
     };
     return (
         <section className='app__flex projects'>

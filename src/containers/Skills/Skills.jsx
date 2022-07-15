@@ -6,7 +6,7 @@ import baseUrl, { skills } from '../../constants'
 import './Skills.scss'
 
 const Skills = () => {
-    const [experiences, setExperiences] = useState([])    
+    const [experiences, setExperiences] = useState([])
 
     useEffect(() => {
         fetch(baseUrl + 'api/experiences')
@@ -29,19 +29,21 @@ const Skills = () => {
                     ))}
                 </div>
                 <div className='app__flex container__experiences'>
-                    {experiences.map((group, index) => (
-                        <div className='experience__container app__flex' key={`${index}-${group}`}>
-                            <div className='experience__year'> {group.year}</div>
-                            <div className='experience__items app__flex'>
-                                {group.ExperienceItems.map((experience, index) => (
-                                    <div className='experience__items-container' key={`${index}#experience__items-container`}>
-                                        <div className='experience__item bold-text'>{`${experience.position === 'Intern' ? experience.position + ', ' : ''}${experience.role}`}</div>
-                                        <div className='experience__item company-text' >{experience.company}</div>
-                                    </div>
-                                ))}
+                    {experiences.length > 0 &&
+                        experiences.map((group, index) => (
+                            <div className='experience__container app__flex' key={`${index}-${group}`}>
+                                <div className='experience__year'> {group.year}</div>
+                                <div className='experience__items app__flex'>
+                                    {group.ExperienceItems.map((experience, index) => (
+                                        <div className='experience__items-container' key={`${index}#experience__items-container`}>
+                                            <div className='experience__item bold-text'>{`${experience.position === 'Intern' ? experience.position + ', ' : ''}${experience.role}`}</div>
+                                            <div className='experience__item company-text' >{experience.company}</div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))
+                    }
                 </div>
             </div>
         </section >
