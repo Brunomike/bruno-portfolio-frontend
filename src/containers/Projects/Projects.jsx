@@ -58,7 +58,7 @@ const Projects = () => {
                     filterProjects.map((project, index) => (
                         <div className='app__project-item app_flex' key={index}>
                             <div className='app__project-img app__flex'>
-                                <img src={`http://localhost:4000/${project.imageUrl}`} alt={project.name} />
+                                <img src={`${baseUrl}${project.imageUrl}`} alt={project.name} />
                                 <motion.div
                                     whileHover={{ opacity: [0, 1] }}
                                     transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
