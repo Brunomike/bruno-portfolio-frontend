@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import baseUrl from '../../constants'
 import Spinner from '../../components/Spinner/Spinner';
 import Logo from '../../assets/bruno-logo-no-bg.png'
 import FormGroup from '../../components/FormGroup/FormGroup'
