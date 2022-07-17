@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-
+import baseUrl from '../../constants'
 import Spinner from '../../components/Spinner/Spinner';
 import Logo from '../../assets/bruno-logo-no-bg.png'
 import FormGroup from '../../components/FormGroup/FormGroup'
@@ -22,30 +23,24 @@ const RegistrationForm = () => {
         confirmPassword: "",
     })
 
-    const { firstName, lastName, email, phoneNumber, dob, password, confirmPassword } = formData
+    const { firstName, lastName, email, phoneNumber, dob, password, confirmPassword } = formData    
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
 
-    useEffect(() => {
+    useEffect(() => {        
         if (isError) {
             toast.error(message)
         }
         if (isSuccess || user) {
+            toast.success('Registration Successful')            
             navigate('/signin')
         }
 
         dispatch(reset());
     }, [user, isError, isSuccess, message, dispatch, navigate])
-
-    useEffect(() => {
-        if (isSuccess) {
-            toast.success('Registration Successful')
-        }
-    }, [isSuccess])
-
 
     const handleChange = (e) => {
         const { value, name } = e.target
@@ -63,8 +58,8 @@ const RegistrationForm = () => {
         else {
             const userData = {
                 firstName, lastName, email, phoneNumber, dob, password, confirmPassword
-            }
-            dispatch(register(userData))
+            }            
+            dispatch(register(userData))          
         }
     }
 
