@@ -25,19 +25,12 @@ const LoginForm = () => {
             toast.error(message)            
         }
         if (isSuccess || user) {
+            toast.success('Login Successful');
             navigate('/dashboard')
         }
 
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
-
-
-    useEffect(() => {
-        if (isSuccess) {
-            toast.success('Login Successful');
-        }
-    }, [isSuccess])
-
 
     const handleChange = (e) => {
         const { value, name } = e.target
