@@ -59,12 +59,12 @@ const Projects = ({ token }) => {
                 })
                 .catch(err => {
                     if (err.response.data) {
-                        console.log(err.response.data);
-                        toast.error("Something went wrong!")
-                        //toast.error(err.response.data.message)
+                        //console.log(err.response.data);
+                        //toast.error("Something went wrong!")
+                        toast.error(err.response.data.message)
                     } else {
-                        console.log({ error: err })
-                        console.log(err.response)
+                        // console.log({ error: err })
+                        // console.log(err.response)
                         toast.error("Something went wrong!")
                     }
                 })
@@ -125,7 +125,7 @@ const Projects = ({ token }) => {
                         projects.map((project, index) => (
                             <Link to={`/dashboard/projects/${project.id}`} key={`${index}`}>
                                 <div className='card project__item'>
-                                    <img src={`${baseUrl}${project.imageUrl.replace('\\', '/')}`} alt={project.title} />
+                                    <img src={`${baseUrl}images/${project.imageUrl.replace('\\', '/')}`} alt={project.title} />
                                     <div className='project__content'>
                                         <h3>{project.title}</h3>
                                         <p>{project.overview}</p>

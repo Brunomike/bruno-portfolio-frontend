@@ -49,8 +49,7 @@ const Experience = ({ token }) => {
                 }
             })
                 .then(res => res.data)
-                .then(data => {
-                    console.log(data);
+                .then(data => {                    
                     setExperiences(data.data)
                     toast.success(data.message)
                     setFormData({
@@ -61,8 +60,7 @@ const Experience = ({ token }) => {
                         "start": "",
                         "end": ""
                     })
-                }).catch(err => {
-                    console.log(err)
+                }).catch(err => {                    
                     toast.error(err.response.data.message)
                 })
         }

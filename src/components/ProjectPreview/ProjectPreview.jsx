@@ -14,7 +14,7 @@ const ProjectPreview = ({ imageUrl }) => {
           </div>
           <div className='webcam__mic'></div>
         </div>
-        <img src={`${baseUrl}${imageUrl}`} alt="Project Preview" />
+        <img src={`${baseUrl}images/${imageUrl}`} alt="Project Preview" />
       </div>
       <div className='base'>
         <div className='base__center'></div>
