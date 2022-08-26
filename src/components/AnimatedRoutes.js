@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
-import { Portfolio, Resume, Testimonial, SignUp, Login, Dashboard, Project, NotFound } from '../pages'
+import { Portfolio, Resume, Testimonial, SignUp, Login, Dashboard, Project, NotFound,Ads } from '../pages'
 
 const user = localStorage.getItem("user")
 const isAuthenticated = localStorage.getItem("isAuthenticated")
@@ -19,6 +19,7 @@ function AnimatedRoutes({ theme, handleThemeSelection }) {
                 <Route path="testimonial" element={<Testimonial to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
                 <Route path="signin" element={<Login />} />
                 <Route path="signup" element={<SignUp />} />
+                <Route path="ads" element={<Ads />} />
 
                 
                 {
