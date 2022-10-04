@@ -1,7 +1,7 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
 
-import Header from '../containers/Header/Header'
+import Header from '../containers/Header/Header';
 import Introduction from '../containers/Introduction/Introduction';
 import About from '../containers/About/About';
 import Skills from '../containers/Skills/Skills';

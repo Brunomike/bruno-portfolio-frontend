@@ -2,12 +2,17 @@ import React from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
-import { Portfolio, Resume, Testimonial, SignUp, Login, Dashboard, Project, NotFound,Ads } from '../pages'
+import { Portfolio, Resume, Testimonial, SignUp, Login, Dashboard, Project, NotFound } from '../pages'
 
 const user = localStorage.getItem("user")
 const isAuthenticated = localStorage.getItem("isAuthenticated")
 
-function AnimatedRoutes({ theme, handleThemeSelection }) {
+interface Props {
+    theme: string
+    handleThemeSelection: (value: string) => void
+}
+
+const AnimatedRoutes: React.FC<Props> = ({ theme, handleThemeSelection }) => {
     const location = useLocation()
 
     return (
@@ -19,9 +24,8 @@ function AnimatedRoutes({ theme, handleThemeSelection }) {
                 <Route path="testimonial" element={<Testimonial to="client" theme={theme} handleThemeSelection={handleThemeSelection} />} />
                 <Route path="signin" element={<Login />} />
                 <Route path="signup" element={<SignUp />} />
-                <Route path="ads" element={<Ads />} />
 
-                
+
                 {
                     isAuthenticated && (
                         <>
@@ -35,7 +39,7 @@ function AnimatedRoutes({ theme, handleThemeSelection }) {
                     )
                 }
 
-                <Route path="*" element={< NotFound />} theme={theme} />
+                <Route path="*" element={< NotFound theme={theme} />}  />
             </Routes>
         </AnimatePresence>
     )
