@@ -18,10 +18,10 @@ const Projects = () => {
     useEffect(() => {
         axios.get(baseUrl + "api/projects")
             .then((res) => res.data.data)
-            .then(data => {                
+            .then(data => {
                 setProjects(data)
                 setFilterProjects(data)
-            })        
+            })
     }, []);
 
     const handleProjectFilter = (item) => {
@@ -104,6 +104,11 @@ const Projects = () => {
                             No Project(s) Found in this category!
                         </div>
                     )
+                }
+                {projects.length > 3 &&
+                    <Link to={`/projects`} className='projects_more'>
+                        View More
+                    </Link>
                 }
             </motion.div>
         </section>
