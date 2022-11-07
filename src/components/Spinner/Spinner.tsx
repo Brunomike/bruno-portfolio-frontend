@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Spinner = () => {
   return (
@@ -9,4 +8,4 @@ const Spinner = () => {
   )
 }
 
-export default Spinner
+export default Spinner;

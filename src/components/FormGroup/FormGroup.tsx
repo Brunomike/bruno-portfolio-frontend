@@ -1,10 +1,7 @@
-import React from 'react'
-
-import Input from '../Input/Input'
-import './FormGroup.scss'
+import Input from '../Input/Input';
+import './FormGroup.scss';
 
 const FormGroup = (props) => {
-
     return (
         <div className='form-group'>
             <label htmlFor={props.name}>{props.title}</label>
@@ -13,4 +10,4 @@ const FormGroup = (props) => {
     )
 }
 
-export default FormGroup
+export default FormGroup;

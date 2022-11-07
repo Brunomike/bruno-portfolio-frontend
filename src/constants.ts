@@ -13,8 +13,8 @@ import git from './assets/git.png'
 import grahpql from './assets/graphql.png'
 import typescript from './assets/typescript.png'
 
-let baseUrl = "http://localhost:4000/"
-process.env.NODE_ENV === 'production' ? baseUrl = "https://michaelbruno.herokuapp.com/" : baseUrl = "http://localhost:4000/"
+
+let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno.herokuapp.com/" : "http://localhost:4000/";
 export default baseUrl
 
 export const roles = [

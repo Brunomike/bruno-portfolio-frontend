@@ -1,41 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { AiOutlineClose, AiOutlineSend } from 'react-icons/ai'
-import { toast } from 'react-toastify'
-import axios from "axios"
+import React, { useState, useEffect } from 'react';
+import { AiOutlineClose, AiOutlineSend } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import axios from "axios";
 
-import baseUrl from '../../../constants'
-import './Messages.scss'
+import baseUrl from '../../../constants';
+import './Messages.scss';
 
-const Messages = ({ token }) => {
-  const [messages, setMessages] = useState([])
-  const [selectedChat, setSelectedChat] = useState(null)
+interface ContactAtrrs {
+  _id: string;
+  fullName: string;
+  email: string;
+  messages: MessageAttrs[];
+}
+
+interface MessageAttrs {
+  _id: string;
+  message: string;
+  source: string;
+  isRead: boolean;
+
+}
+
+const Messages = () => {
+  const [contacts, setContacts] = useState<ContactAtrrs[]>([])
+  const [selectedChat, setSelectedChat] = useState<number | null>(null)
   const [replyMessage, setReplyMessage] = useState("")
 
   useEffect(() => {
-    axios.get(baseUrl + "api/messages", {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    })
+    axios.get(baseUrl + "api/messages")
       .then(res => res.data.data)
-      .then(data => {
-        setMessages(data)
+      .then(data => {        
+        setContacts(data)
       })
-  }, [token])
+  }, [])
 
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     setSelectedChat(index)
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement |HTMLTextAreaElement>) => {
     setReplyMessage(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
     let body = {
-      email: messages[selectedChat].email,
+      email: contacts[selectedChat as number].email,
       message: replyMessage,
       source: "admin"
     }
@@ -43,7 +54,6 @@ const Messages = ({ token }) => {
     axios.post(baseUrl + "api/messages", body, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
       }
     })
       .then(res => res.data)
@@ -61,15 +71,15 @@ const Messages = ({ token }) => {
   return (
     <div className='messages'>
       <div className='messages__container'>
-        {messages.length > 0 ?
-          messages.map((sender, index) => (
-            <div className='message__item' key={index} onClick={() => handleClick(`${index}`)}>
+        {contacts.length > 0 ?
+          contacts.map((sender, index) => (
+            <div className='message__item' key={index} onClick={() => handleClick(index)}>
               <div className='item__avatar'>{`${sender.fullName.split(" ")[0][0]}${sender.fullName.split(" ")[1][0]}`}</div>
               <div className='item__content'>
                 <h4>{sender.fullName}</h4>
                 <h4>{sender.email}</h4>
-                {sender.Messages.length > 0 && (
-                  <p>{sender.Messages[0].message.slice(0, 20)}</p>
+                {sender.messages.length > 0 && (
+                  <p>{sender.messages[0].message.slice(0, 20)}</p>
                 )}
               </div>
             </div>
@@ -82,12 +92,12 @@ const Messages = ({ token }) => {
       {selectedChat && (
         <div className='chat__container'>
           <div className='chat__header'>
-            <h4>{messages[selectedChat].fullName}</h4>
+            <h4>{contacts[selectedChat].fullName}</h4>
             <button onClick={() => setSelectedChat(null)}><AiOutlineClose /></button>
           </div>
           <div className='chat__body'>
-            {messages[selectedChat].Messages.map((message, index) => (
-              <div className='chat__item' key={`${index}${message.id}`}>
+            {contacts[selectedChat].messages.map((message, index) => (
+              <div className='chat__item' key={`${index}${message._id}`}>
                 <div className='item__message'>{message.message}</div>
                 <div className='item__time'>10:19 am</div>
               </div>
@@ -96,7 +106,8 @@ const Messages = ({ token }) => {
           </div>
           <div className='chat__actions'>
             <form onSubmit={handleSubmit}>
-              <textarea type="text" name="message" value={replyMessage} onChange={handleChange} />
+              <label htmlFor="message">Message</label>
+              <textarea name="message" value={replyMessage} onChange={handleChange} />
               <button type='submit'><AiOutlineSend /></button>
             </form>
           </div>

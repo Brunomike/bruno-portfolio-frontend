@@ -3,7 +3,7 @@ import React from 'react'
 import baseUrl from '../../constants'
 import "./ProjectPreview.scss"
 
-const ProjectPreview = ({ imageUrl }) => {
+const ProjectPreview = ({ imageUrl }: { imageUrl: string }) => {
   return (
     <div className='wrap'>
       <div className='monitor'>

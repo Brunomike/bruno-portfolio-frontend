@@ -1,29 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
+import { useEffect, useState } from 'react';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
-import baseUrl from '../../constants'
-import Empty from '../../assets/empty.svg'
-import AppWrapper from '../../hoc/AppWrapper'
+import baseUrl from '../../constants';
+import Empty from '../../assets/empty.svg';
+import AppWrapper from '../../hoc/AppWrapper';
 import MotionWrapper from '../../hoc/MotionWrapper';
-import './Testimonials.scss'
+import './Testimonials.scss';
+
+
+interface TestimonialAttrs {
+    "fullName": string;
+    "feedback": string;
+    "company": string;
+    "projectName": string | null;
+    "role": string;
+    "email": string;
+    "portfolioLink": string | null;
+    "phoneNumber": string;
+    "imageUrl": string|null;
+    "createdAt": string;
+    "updatedAt": string;
+    "id": string;
+}
 
 
 const Testimonials = () => {
-    const [testimonials, setTestimonials] = useState([]);
+    const [testimonials, setTestimonials] = useState<TestimonialAttrs[]>([]);
     const [currentIndex, setcurrentIndex] = useState(0);
 
     useEffect(() => {
         fetch(baseUrl + 'api/testimonials')
             .then(res => res.json())
-            .then(data => {
-                setTestimonials(data)
+            .then(res=>res.data)
+            .then(data => {                                
+                setTestimonials(data.testimonials);
             })
-    }, [])
+    }, []);
 
 
     const tst = testimonials[currentIndex];
 
-    const handleClick = (index) => {
+    const handleClick = (index: number) => {
         setcurrentIndex(index)
     }
 
@@ -39,7 +56,8 @@ const Testimonials = () => {
                             <p className='p-text'>{tst.feedback}</p>
                             <div>
                                 <h4 className='bold-text'>{tst.fullName}</h4>
-                                <h5 className='p-text'>{tst.company}</h5>
+                                {tst.role && (<h5 className='p-text'>{tst.role}</h5>)}
+                                {tst.company && (<h5 className='p-text'>{tst.company}</h5>)}
                             </div>
                         </div>
                     </div>

@@ -11,14 +11,19 @@ import Messages from '../containers/admin/Messages/Messages'
 import Testimonials from '../containers/admin/Testimonials/Testimonials'
 import Experience from '../containers/admin/Experience/Experience'
 
-const Dashboard = ({ main }) => {
-    const { user } = useSelector((state) => state.auth)
-    let isAuthenticated = localStorage.getItem("isAuthenticated")
+interface DashboardProps {
+    main: string;
+    handleThemeSelection(): void;
+}
+
+const Dashboard = ({ main, handleThemeSelection }: DashboardProps) => {
+    const { user } = useSelector((state: { auth: any }) => state.auth);
+    let isAuthenticated = localStorage.getItem("isAuthenticated");
 
     if (!isAuthenticated) {
         return <Navigate to="/signin" />
     }
-    
+
     return (
         <div className='app__dashboard'>
             <Header />
@@ -26,19 +31,17 @@ const Dashboard = ({ main }) => {
                 <Sidebar />
                 {user &&
                     <>
-                        {main === "home" && <Home token={user.token} />}
-                        {main === "projects" && <Projects token={user.token} />}
-                        {main === "project" && <Project to="admin" token={user.token} />}
-                        {main === "messages" && <Messages token={user.token} />}
-                        {main === "testimonials" && <Testimonials token={user.token} />}
-                        {main === "experiences" && <Experience token={user.token} />}
+                        {main === "home" && <Home />}
+                        {main === "projects" && <Projects />}
+                        {main === "project" && <Project to="admin" token={user.token} theme={''} handleThemeSelection={handleThemeSelection} />}
+                        {main === "messages" && <Messages />}
+                        {main === "testimonials" && <Testimonials />}
+                        {main === "experiences" && <Experience />}
                     </>
                 }
             </div>
         </div>
     )
-
-
 }
 
-export default Dashboard
+export default Dashboard;

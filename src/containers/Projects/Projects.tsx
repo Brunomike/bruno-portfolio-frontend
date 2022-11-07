@@ -1,40 +1,58 @@
-import React, { useState, useEffect } from 'react'
-import axios from "axios"
-import { Link } from 'react-router-dom'
-import { AiFillEye, AiFillGithub } from 'react-icons/ai'
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import { Link } from 'react-router-dom';
+import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 
-import baseUrl from '../../constants'
-import AppWrapper from '../../hoc/AppWrapper'
-import MotionWrapper from '../../hoc/MotionWrapper'
-import './Projects.scss'
+import baseUrl from '../../constants';
+import AppWrapper from '../../hoc/AppWrapper';
+import MotionWrapper from '../../hoc/MotionWrapper';
+import './Projects.scss';
+
+interface TagAttrs {
+    _id: string;
+    title: string;
+}
+
+interface ProjectAttrs {
+    _id: string;
+    title: string;
+    description: string;
+    overview: string;
+    liveLink: string;
+    codeLink: string;
+    imageUrl: string;
+    projectImageUrl: string;
+    category: string;
+    tags: TagAttrs[];
+}
 
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('All');
     const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-    const [projects, setProjects] = useState([]);
-    const [filterProjects, setFilterProjects] = useState([]);
+    const [projects, setProjects] = useState<ProjectAttrs[]>([]);
+    const [filterProjects, setFilterProjects] = useState<ProjectAttrs[]>([]);
 
     useEffect(() => {
         axios.get(baseUrl + "api/projects")
             .then((res) => res.data.data)
             .then(data => {
-                setProjects(data)
-                setFilterProjects(data)
-            })
+                setProjects(data.projects);
+                setFilterProjects(data.projects);
+            });
     }, []);
 
-    const handleProjectFilter = (item) => {
-        setActiveFilter(item)
-        setAnimateCard([{ y: 100, opacity: 0 }])
+    const handleProjectFilter = (item: string) => {
+        setActiveFilter(item);
+        setAnimateCard({ y: 100, opacity: 0 });
         setTimeout(() => {
-            setAnimateCard([{ y: 0, opacity: 1 }])
+            setAnimateCard({ y: 0, opacity: 1 });
             if (item === 'All') {
-                setFilterProjects(projects)
+                setFilterProjects(projects);
             } else {
-                setFilterProjects(projects.filter((project) => project.category.toLowerCase() === item.toLowerCase()))
+                setFilterProjects(projects.filter((project) => project.category.toLowerCase() === item.toLowerCase()));
             }
-        }, 500)
+        }, 500);
     };
     return (
         <section className='app__flex projects'>
@@ -58,7 +76,7 @@ const Projects = () => {
                     filterProjects.map((project, index) => (
                         <div className='app__project-item app_flex' key={index}>
                             <div className='app__project-img app__flex'>
-                                <img src={`${baseUrl}images/${project.imageUrl}`} alt={project.name} />
+                                <img src={`${baseUrl}images/${project.imageUrl}`} alt={project.title} />
                                 <motion.div
                                     whileHover={{ opacity: [0, 1] }}
                                     transition={{ duration: 0.25, ease: 'easeInOut', staggerChildren: 0.5 }}
@@ -87,7 +105,7 @@ const Projects = () => {
                                 </motion.div>
                             </div>
 
-                            <Link to={`/project/${project.id}`} className="nav-link"  >
+                            <Link to={`/project/${project._id}`} className="nav-link"  >
                                 <div className='app__project-content app__flex'>
                                     <h4 className='bold-text'>{project.title}</h4>
                                     <p className='p-text' style={{ marginTop: 10 }}>{project.overview.length > 100 ? project.overview.slice(0, 99) + "..." : project.overview}</p>

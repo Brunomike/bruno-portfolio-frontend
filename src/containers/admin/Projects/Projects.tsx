@@ -8,7 +8,25 @@ import baseUrl from '../../../constants'
 import FormGroup from '../../../components/FormGroup/FormGroup'
 import './Projects.scss'
 
-const Projects = ({ token }) => {
+interface TagAttrs {
+    _id: string;
+    title: string;
+}
+
+interface ProjectAttrs {
+    title: string;
+    description: string;
+    overview: string;
+    liveLink: string;
+    codeLink: string;
+    imageUrl: string;
+    projectImageUrl: string;
+    category: string;
+    tags: TagAttrs[];
+    _id: string;
+}
+
+const Projects = () => {
     const [formData, setFormData] = useState({
         title: "",
         overview: "",
@@ -18,40 +36,43 @@ const Projects = ({ token }) => {
         category: ""
     })
 
-    const { title, overview, description, codeLink, category } = formData
-    const [avatar, setAvatar] = useState(null)
-    const [previewImage, setPreviewImage] = useState(null)
-    const [projects, setProjects] = useState([])
+    const { title, overview, description, liveLink, codeLink, category } = formData
+    const [avatar, setAvatar] = useState<File | null>(null)
+    const [previewImage, setPreviewImage] = useState<File | null>(null)
+    const [projects, setProjects] = useState<ProjectAttrs[]>([])
 
     useEffect(() => {
         axios.get(baseUrl + "api/projects")
+            .then(res => res.data)
             .then(data => {
-                setProjects(data.data.data)
+                setProjects(data.data.projects)
             })
     }, [])
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         const newFormData = new FormData();
 
-        for (const name in formData) {
-            newFormData.append(name, formData[name]);
-        }
-
-        if (title === "" || overview === "" || description === "" || codeLink === "" || category === "") {
+        if (title === "" || overview === "" || description === "" || codeLink === "" || category === "" || avatar === null || previewImage === null) {
             toast.error("All fields are required!")
         } else {
+            // for (const name in formData) {
+            //     newFormData.append(name, formData[`${name}`]);
+            // } 
+
+            newFormData.append(title, formData['title']);
+            newFormData.append(overview, formData['overview']);
+            newFormData.append(description, formData['description']);
+            newFormData.append(liveLink, formData['liveLink']);
+            newFormData.append(codeLink, formData['codeLink']);
+            newFormData.append(category, formData['category']);
 
             newFormData.append('uploadedImages', previewImage, previewImage.name)
             newFormData.append('uploadedImages', avatar, avatar.name)
 
-            axios.post(baseUrl + "api/projects", newFormData, {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            })
+            axios.post(baseUrl + "api/projects", newFormData)
                 .then(res => res.data)
                 .then(data => {
                     clear()
@@ -71,17 +92,13 @@ const Projects = ({ token }) => {
         }
     }
 
-    const handleDelete = (e, id) => {
+    const handleDelete = (e: React.FormEvent, id: string) => {
         e.preventDefault()
-        axios.delete(baseUrl + "api/projects/" + id, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
+        axios.delete(baseUrl + "api/projects/" + id)
             .then(res => res.data)
             .then(data => {
                 clear()
-                let newProjects = projects.filter(project => project.id !== id)
+                let newProjects = projects.filter(project => project._id !== id)
                 setProjects(newProjects)
                 toast.success(data.message)
             })
@@ -97,24 +114,29 @@ const Projects = ({ token }) => {
             description: "",
             liveLink: "",
             codeLink: "",
+            category: ""
         })
         setAvatar(null)
         setPreviewImage(null)
     }
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
         }))
     }
 
-    const handleAvatarChange = (e) => {
-        setAvatar(e.target.files[0])
+    const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setAvatar(e.target.files[0])
+        }
     }
 
-    const handlePreviewChange = (e) => {
-        setPreviewImage(e.target.files[0])
+    const handlePreviewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setPreviewImage(e.target.files[0])
+        }
     }
 
     return (
@@ -123,18 +145,18 @@ const Projects = ({ token }) => {
                 <div className='projects__list'>
                     {projects.length > 0 &&
                         projects.map((project, index) => (
-                            <Link to={`/dashboard/projects/${project.id}`} key={`${index}`}>
+                            <Link to={`/dashboard/projects/${project._id}`} key={`${index}`}>
                                 <div className='card project__item'>
                                     <img src={`${baseUrl}images/${project.imageUrl.replace('\\', '/')}`} alt={project.title} />
                                     <div className='project__content'>
                                         <h3>{project.title}</h3>
                                         <p>{project.overview}</p>
                                         <div className='project__tags'>
-                                            {project.Tags.map((tag, index) => (
-                                                <div className='project__tag' key={`${index}-`}>{tag.name}</div>
+                                            {project.tags.map((tag, index) => (
+                                                <div className='project__tag' key={`${index}-`}>{tag.title}</div>
                                             ))}
                                         </div>
-                                        <BsFillTrashFill onClick={(e) => handleDelete(e, project.id)} />
+                                        <BsFillTrashFill onClick={(e) => handleDelete(e, project._id)} />
                                     </div>
                                 </div>
                             </Link>
@@ -152,15 +174,17 @@ const Projects = ({ token }) => {
                         <FormGroup title={"Code Link"} type="text" name={"codeLink"} placeholder="" handleChange={handleChange} value={formData.codeLink} />
                         <label htmlFor="category">Choose Project Category</label>
                         <select name={"category"} id="category" value={category} onChange={handleChange}>
-                            <option value="front-end" defaultValue>Front End</option>
+                            <option value="front-end" defaultValue={"front-end"}>Front End</option>
                             <option value="mobile app">Mobile App</option>
                             <option value="back-end">Back End</option>
                             <option value="full-stack">Full Stack</option>
                         </select>
-                        <label htmlFor="uploadedImages">Project Avatar </label>
+                        <FormGroup title={"Project Avater"} type="file" name="projectAvatar" handleChange={handleAvatarChange} />
+                        <FormGroup title={"Project Preview"} type="file" name="projectPreview" handleChange={handlePreviewChange} />
+                        {/* <label htmlFor="uploadedImages">Project Avatar </label>
                         <input type="file" name="projectAvatar" onChange={handleAvatarChange} />
                         <label htmlFor="uploadedImages">Project Preview </label>
-                        <input type="file" name="projectPreview" onChange={handlePreviewChange} />
+                        <input type="file" name="projectPreview" onChange={handlePreviewChange} /> */}
                         <button type="submit">Submit</button>
                     </form>
                 </div>

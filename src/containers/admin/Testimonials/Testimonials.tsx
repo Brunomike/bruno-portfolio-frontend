@@ -1,39 +1,55 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-import baseUrl from '../../../constants'
-import Empty from '../../../assets/empty.svg'
-import FormGroup from "../../../components/FormGroup/FormGroup"
-import "./Testimonials.scss"
+import baseUrl from '../../../constants';
+import Empty from '../../../assets/empty.svg';
+import FormGroup from "../../../components/FormGroup/FormGroup";
+import "./Testimonials.scss";
 
 
-const Testimonials = ({ token }) => {
+interface TestimonialAttrs {
+  "fullName": string;
+  "feedback": string;
+  "company": string;
+  "projectName": string | null;
+  "role": string;
+  "email": string;
+  "portfolioLink": string | null;
+  "phoneNumber": string;
+  "imageUrl": string|null;
+  "createdAt": string;
+  "updatedAt": string;
+  "id": string;
+}
+
+
+const Testimonials = () => {
   const [formData, setFormData] = useState({
     email: "",
     fullName: "",
     title: ""
   })
   const { email, fullName, title } = formData
-  const [testimonials, setTestimonials] = useState([])
+  const [testimonials, setTestimonials] = useState<TestimonialAttrs[]>([])
 
   useEffect(() => {
     axios.get(baseUrl + "api/testimonials")
       .then(res => res.data)
-      .then(data => {
-        setTestimonials(data)
+      .then(data => {                
+        setTestimonials(data.data.testimonials)
       })
   }, [])
 
 
-  const handleChange = (e) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault()
 
     if (email === "" || fullName === "" || title === "") {
@@ -41,7 +57,7 @@ const Testimonials = ({ token }) => {
     } else {
       axios.post(baseUrl + "api/testimonials/send", formData, {
         headers: {
-          "Authorization": `Bearer ${token}`
+          "Content-Type":"application/json"
         }
       })
         .then(res => res.data)
@@ -68,10 +84,11 @@ const Testimonials = ({ token }) => {
         <div className="testimonials-list">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="testimonial-item">
-              <img src={testimonial.imageUrl ? `${baseUrl}${testimonial.imageUrl}` : Empty} alt="Testimonial" />
+              <img src={testimonial.imageUrl ? `${baseUrl}images/${testimonial.imageUrl}` : Empty} alt="Testimonial" />
               <div className='item__content'>
                 <div className='item__name'>{testimonial.fullName}</div>
-                <div className='item__company'>{testimonial.company}</div>
+                {testimonial.role && (<div className='item__company p-text'>{testimonial.role}</div>)}
+                {testimonial.company && (<div className='item__company'>{testimonial.company}</div>)}                
               </div>
             </div>
           ))}

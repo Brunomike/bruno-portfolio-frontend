@@ -2,11 +2,25 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-import FormGroup from '../../../components/FormGroup/FormGroup'
-import "./Experience.scss"
-import baseUrl from '../../../constants'
+import FormGroup from '../../../components/FormGroup/FormGroup';
+import "./Experience.scss";
+import baseUrl from '../../../constants';
 
-const Experience = ({ token }) => {
+interface ExperienceAttrs{     
+      year: string;
+      experiences:[
+          {
+              role:string;
+              position:string;
+              organization:string;
+              abbreviation:string;
+              startDate:string;
+              endDate:string;
+          }
+      ]        
+}
+
+const Experience = () => {
     const [formData, setFormData] = useState({
         "year": "",
         "role": "",
@@ -15,29 +29,29 @@ const Experience = ({ token }) => {
         "start": "",
         "end": ""
     })
-    const [experiences, setExperiences] = useState([])
+    const [experiences, setExperiences] = useState<ExperienceAttrs[]>([])
 
     const { year, role, position, organization, start, end } = formData
 
     useEffect(() => {
         axios.get(baseUrl + "api/experiences")
             .then(res => res.data)
-            .then(data => {
-                setExperiences(data)
+            .then((data) => {                
+                setExperiences(data.data.experiences);
             })
             .catch(err => {
                 console.log(err)
             })
     }, [])
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
         if (year === "" || role === "" || position === "" || organization === "" || start === "" || end === "") {
@@ -45,13 +59,13 @@ const Experience = ({ token }) => {
         } else {
             axios.post(baseUrl + "api/experiences", formData, {
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Content-Type":"application/json"
                 }
             })
                 .then(res => res.data)
-                .then(data => {                    
-                    setExperiences(data.data)
-                    toast.success(data.message)
+                .then(data => {
+                    setExperiences(data.data.experiences);
+                    toast.success(data.message);
                     setFormData({
                         "year": "",
                         "role": "",
@@ -60,12 +74,10 @@ const Experience = ({ token }) => {
                         "start": "",
                         "end": ""
                     })
-                }).catch(err => {                    
-                    toast.error(err.response.data.message)
+                }).catch(err => {
+                    toast.error(err.response.data.message);
                 })
         }
-
-
     }
 
 
@@ -77,10 +89,10 @@ const Experience = ({ token }) => {
                         <div className='list__experience-item' key={`${index}-list`}>
                             <div className='item__year'>{experience.year}</div>
                             <div className='item__contents'>
-                                {experience.ExperienceItems.map((experienceItem, index) => (
+                                {experience.experiences.map((experienceItem, index) => (
                                     <div className='item__content' key={`${index}-item`}>
                                         <div className='item__position'>{experienceItem.position}</div>
-                                        <div className='item__company'>{experienceItem.company}</div>
+                                        <div className='item__company'>{experienceItem.organization}</div>
                                     </div>
                                 ))}
                             </div>
@@ -103,4 +115,4 @@ const Experience = ({ token }) => {
     )
 }
 
-export default Experience
+export default Experience;

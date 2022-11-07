@@ -9,3 +9,6 @@ export const store = configureStore({
     //project: projectReducer
   },
 });
+
+
+export type AppDispatch = typeof store.dispatch;

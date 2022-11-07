@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import React, { useState, useEffect, ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-import baseUrl from '../../constants'
-import FormGroup from '../../components/FormGroup/FormGroup'
-import './Testimonial.scss'
+import baseUrl from '../../constants';
+import FormGroup from '../../components/FormGroup/FormGroup';
+import './Testimonial.scss';
 
 const Testimonial = () => {
     const [formData, setFormData] = useState({
@@ -17,7 +17,9 @@ const Testimonial = () => {
         phoneNumber: "",
         portfolioLink: ""
     })
-    const [selectedFile, setSelectedFile] = useState(null)
+
+    const { email, fullName, feedback, role } = formData;
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const navigate = useNavigate()
 
@@ -31,7 +33,7 @@ const Testimonial = () => {
     }, [navigate])
 
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
@@ -40,27 +42,37 @@ const Testimonial = () => {
 
     let token = window.location.search.split("=")[1]
 
-    const handleFileInput = (e) => {
-        setSelectedFile(e.target.files[0])
+    const handleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setSelectedFile(e.target.files[0]);
+        }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
+
+        if (email === "" || fullName === "" || feedback === "" || role === "") {
+            toast.error('Please fill all required fields');
+        }
         const newFormData = new FormData()
 
-        for (const name in formData) {
-            newFormData.append(name, formData[name])
-        }
+        // for (const name in formData) {
+        //     newFormData.append(name, formData[name]);
+        // }
+
+        newFormData.append("email", formData['email']);
+        newFormData.append("fullName", formData['fullName']);
+        newFormData.append("feedback", formData['feedback']);
+        newFormData.append("company", formData['company']);
+        newFormData.append("role", formData['role']);
+        newFormData.append("phoneNumber", formData['phoneNumber']);
+        newFormData.append("portfolioLink", formData['portfolioLink']);
 
         if (selectedFile) {
             newFormData.append("uploadedImages", selectedFile, selectedFile.name)
         }
 
-        axios.post(baseUrl + "api/testimonials", newFormData, {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        })
+        axios.post(baseUrl + "api/testimonials")
             .then(res => res.data)
             .then(data => {
                 toast.success("Testimonial sent successfully!")
@@ -81,7 +93,9 @@ const Testimonial = () => {
                 <FormGroup title={"Phone Number"} type="text" name="phoneNumber" placeholder="" handleChange={handleChange} value={formData.phoneNumber} />
                 <FormGroup title={"Feedback"} type="text" name="feedback" placeholder="" handleChange={handleChange} value={formData.feedback} />
                 <FormGroup title={"Company"} type="text" name="company" placeholder="" handleChange={handleChange} value={formData.company} />
-                <input type="file" name="uploadedImages" onChange={handleFileInput} />
+                <FormGroup title="Image" type="file" name="uploadedImages" handleChange={handleFileInput} />
+                {/* <label htmlFor="uploadedImages"></label>
+                <input type="file" name="uploadedImages" onChange={handleFileInput} /> */}
                 <button type='submit'>Submit</button>
             </form>
         </div>
