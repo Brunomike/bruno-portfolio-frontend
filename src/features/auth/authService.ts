@@ -10,7 +10,7 @@ export interface LoginAttrs {
 
 //Register User
 const register = async (userData: any) => {
-    const response = await axios.post(API_URL+"signup", userData);
+    const response = await axios.post(API_URL + "signup", userData);
     // if (response.data) {
     //     localStorage.setItem('user', JSON.stringify(response.data));
     // }
@@ -18,9 +18,9 @@ const register = async (userData: any) => {
 };
 
 //Login User
-const login = async (userData:any) => {
+const login = async (userData: any) => {
     let LOGIN_URL = API_URL + "signin";
-    const response = await axios.post(LOGIN_URL, userData);
+    const response = await axios.post(LOGIN_URL, userData, { withCredentials: true });
     console.log(response.headers['set-cookie']);
 
     if (response.data) {

@@ -27,7 +27,7 @@ const Messages = () => {
   const [replyMessage, setReplyMessage] = useState("")
 
   useEffect(() => {
-    axios.get(baseUrl + "api/messages")
+    axios.get(baseUrl + "api/messages",{withCredentials:true})
       .then(res => res.data.data)
       .then(data => {        
         setContacts(data)
