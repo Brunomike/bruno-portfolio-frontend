@@ -36,9 +36,11 @@ const Projects = () => {
         category: ""
     })
 
+
+
     const { title, overview, description, liveLink, codeLink, category } = formData
-    const [avatar, setAvatar] = useState<File | null>(null)
-    const [previewImage, setPreviewImage] = useState<File | null>(null)
+    const [avatar, setAvatar] = useState<File>()
+    const [previewImage, setPreviewImage] = useState<File>()
     const [projects, setProjects] = useState<ProjectAttrs[]>([])
 
     useEffect(() => {
@@ -55,46 +57,46 @@ const Projects = () => {
 
         const newFormData = new FormData();
 
-        if (title === "" || overview === "" || description === "" || codeLink === "" || category === "" || avatar === null || previewImage === null) {
+        if (title === "" || overview === "" || description === "" || codeLink === "" || category === "") {
             toast.error("All fields are required!")
         } else {
-            // for (const name in formData) {
-            //     newFormData.append(name, formData[`${name}`]);
-            // } 
+            if (previewImage && avatar) {
+                newFormData.append("title", formData['title']);
+                newFormData.append("overview", formData['overview']);
+                newFormData.append("description", formData['description']);
+                newFormData.append("liveLink", formData['liveLink']);
+                newFormData.append("codeLink", formData['codeLink']);
+                newFormData.append("category", formData['category']);
 
-            newFormData.append(title, formData['title']);
-            newFormData.append(overview, formData['overview']);
-            newFormData.append(description, formData['description']);
-            newFormData.append(liveLink, formData['liveLink']);
-            newFormData.append(codeLink, formData['codeLink']);
-            newFormData.append(category, formData['category']);
+                newFormData.append('uploadedImages', previewImage, previewImage.name)
+                newFormData.append('uploadedImages', avatar, avatar.name)
 
-            newFormData.append('uploadedImages', previewImage, previewImage.name)
-            newFormData.append('uploadedImages', avatar, avatar.name)
-
-            axios.post(baseUrl + "api/projects", newFormData)
-                .then(res => res.data)
-                .then(data => {
-                    clear()
-                    toast.success(data.message)
-                })
-                .catch(err => {
-                    if (err.response.data) {
-                        //console.log(err.response.data);
-                        //toast.error("Something went wrong!")
-                        toast.error(err.response.data.message)
-                    } else {
-                        // console.log({ error: err })
-                        // console.log(err.response)
-                        toast.error("Something went wrong!")
-                    }
-                })
+                axios.post(baseUrl + "api/projects", newFormData, { withCredentials: true })
+                    .then(res => res.data)
+                    .then(data => {
+                        clear()
+                        toast.success(data.message)
+                    })
+                    .catch(err => {
+                        if (err.response.data) {
+                            //console.log(err.response.data);
+                            //toast.error("Something went wrong!")
+                            toast.error(err.response.data.message)
+                        } else {
+                            // console.log({ error: err })
+                            // console.log(err.response)
+                            toast.error("Something went wrong!")
+                        }
+                    })
+            } else {
+                toast.error("Please provide the project images");
+            }
         }
     }
 
     const handleDelete = (e: React.FormEvent, id: string) => {
         e.preventDefault()
-        axios.delete(baseUrl + "api/projects/" + id)
+        axios.delete(baseUrl + "api/projects/" + id, { withCredentials: true })
             .then(res => res.data)
             .then(data => {
                 clear()
@@ -116,8 +118,8 @@ const Projects = () => {
             codeLink: "",
             category: ""
         })
-        setAvatar(null)
-        setPreviewImage(null)
+        setAvatar(undefined)
+        setPreviewImage(undefined)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -179,8 +181,8 @@ const Projects = () => {
                             <option value="back-end">Back End</option>
                             <option value="full-stack">Full Stack</option>
                         </select>
-                        <FormGroup title={"Project Avater"} type="file" name="projectAvatar" handleChange={handleAvatarChange} />
-                        <FormGroup title={"Project Preview"} type="file" name="projectPreview" handleChange={handlePreviewChange} />
+                        <FormGroup title={"Project Avater"} type="file" name="projectAvatar" id="projectAvatar" handleChange={handleAvatarChange} />
+                        <FormGroup title={"Project Preview"} type="file" name="projectPreview" id="projectPreview" handleChange={handlePreviewChange} />
                         {/* <label htmlFor="uploadedImages">Project Avatar </label>
                         <input type="file" name="projectAvatar" onChange={handleAvatarChange} />
                         <label htmlFor="uploadedImages">Project Preview </label>

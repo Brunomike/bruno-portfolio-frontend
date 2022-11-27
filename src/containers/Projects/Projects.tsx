@@ -108,7 +108,7 @@ const Projects = () => {
                             <Link to={`/project/${project._id}`} className="nav-link"  >
                                 <div className='app__project-content app__flex'>
                                     <h4 className='bold-text'>{project.title}</h4>
-                                    <p className='p-text' style={{ marginTop: 10 }}>{project.overview.length > 100 ? project.overview.slice(0, 99) + "..." : project.overview}</p>
+                                    {/* <p className='p-text' style={{ marginTop: 10 }}>{project.overview.length > 100 ? project.overview.slice(0, 99) + "..." : project.overview}</p> */}                                    
                                     <div className='app__project-tag app__flex'>
                                         <p className='p-text'>{`${project.category.charAt(0).toUpperCase() + project.category.slice(1)}`}</p>
                                     </div>

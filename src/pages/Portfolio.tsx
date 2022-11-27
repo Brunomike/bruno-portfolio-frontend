@@ -10,7 +10,12 @@ import Testimonials from '../containers/Testimonials/Testimonials';
 import Contact from '../containers/Contact/Contact';
 import Footer from '../containers/Footer/Footer';
 
-const Home = ({ theme, handleThemeSelection }) => {
+interface HomeProps {
+    theme: string;
+    handleThemeSelection(): void
+}
+
+const Home: React.FC<HomeProps> = ({ theme, handleThemeSelection }) => {
     return (
         <motion.div
             initial={{ opacity: 0 }}

@@ -9,7 +9,7 @@ import MotionWrapper from '../../hoc/MotionWrapper'
 import AppWrapper from '../../hoc/AppWrapper'
 import './Contact.scss'
 
-const Contact = ({token}) => {
+const Contact = ({ token }) => {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -19,7 +19,7 @@ const Contact = ({token}) => {
 
     const { fullName, email, message } = formData
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value, name } = e.target
         setFormData((prevState) => ({
             ...prevState,
@@ -28,17 +28,17 @@ const Contact = ({token}) => {
         );
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        axios.post(baseUrl+"api/messages", formData, {
+        axios.post(baseUrl + "api/messages", formData, {
             headers: {
-                "Content-Type": "application/json",                
-            },
+                "Content-Type": "application/json",
+            }
         })
             .then(res => res.data)
-            .then(data => {                
-                setFormData({ fullName: "", email: "", message: "" })
+            .then(data => {
+                setFormData({ fullName: "", email: "", message: "", source: "client" })
                 toast.success(data.message)
             })
             .catch(err => {

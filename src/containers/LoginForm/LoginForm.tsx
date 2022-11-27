@@ -25,11 +25,9 @@ const LoginForm = () => {
         if (isError) {
             toast.error(message)
         }
-        if (isSuccess) {
-            toast.success('Login Successful');
-            setTimeout(()=>{
-                navigate('/dashboard')
-            },3000);
+        if (isSuccess && user) {
+            toast.success('Login Successful');            
+                navigate('/dashboard')            
         }
 
         dispatch(reset());

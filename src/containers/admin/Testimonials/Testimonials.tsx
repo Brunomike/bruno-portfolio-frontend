@@ -58,7 +58,8 @@ const Testimonials = () => {
       axios.post(baseUrl + "api/testimonials/send", formData, {
         headers: {
           "Content-Type":"application/json"
-        }
+        },
+        withCredentials:true
       })
         .then(res => res.data)
         .then(data => {

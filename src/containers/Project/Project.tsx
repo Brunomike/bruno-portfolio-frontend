@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import TagsInput from 'react-tagsinput';
 import axios from 'axios'
 
 import Header from '../Header/Header'
@@ -10,8 +11,7 @@ import ProjectPreview from '../../components/ProjectPreview/ProjectPreview'
 import './Project.scss'
 import baseUrl from '../../constants'
 import FormGroup from '../../components/FormGroup/FormGroup'
-
-
+import 'react-tagsinput/react-tagsinput.css'
 
 interface TagAttrs {
     _id: string;
@@ -38,10 +38,10 @@ interface ProjectProps {
     token: string;
 }
 
-const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
-    const [project, setProject] = useState<ProjectAttrs|null>()
+const Project = ({ to, theme, handleThemeSelection }: ProjectProps) => {
+    const [project, setProject] = useState<ProjectAttrs | null>()
     const [imageList, setImageList] = useState<File[]>([])
-    const [skill, setSkill] = useState("")
+    const [skills, setSkills] = useState<string[]>([])
     const params = useParams()
 
     useEffect(() => {
@@ -69,7 +69,7 @@ const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
                     });
                 }
 
-                axios.post(baseUrl + "api/images", formData)
+                axios.post(baseUrl + "api/images", formData, { withCredentials: true })
                     .then(res => res.data)
                     .then(data => {
                         toast.success(data.message)
@@ -80,9 +80,9 @@ const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
             } else {
                 const data = {
                     projectId: project._id,
-                    tag: skill
+                    tags: skills
                 }
-                axios.post(baseUrl + "api/projects/tags", data)
+                axios.post(baseUrl + "api/projects/tags", data, { withCredentials: true })
                     .then(res => res.data)
                     .then(data => {
                         toast.success(data.message);
@@ -96,19 +96,19 @@ const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
                         prevProjectState.tags = updatedTags;
 
                         setProject(prevProjectState);
-                        setSkill("");
+                        setSkills([]);
 
                         // if (project) {
                         //     setProject(prevState => ({
                         //         ...prevState,
                         //         tags: updatedTags
                         //     }));
-                        //     setSkill("");
+                        //     setSkills("");
                         // }
 
                     })
                     .catch(err => {
-                        toast.error("Failed to add new skill!")
+                        toast.error("Failed to add new skills!")
                     })
             }
         }
@@ -121,8 +121,9 @@ const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
         }
     }
 
-    const handleSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSkill(e.target.value)
+    const handleSkillChange = (skills: string[]) => {        
+        setSkills(skills)
+        console.log(skills);
     }
 
     if (to === "client") {
@@ -135,7 +136,7 @@ const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
                             <div className='app__section dark__section app__flex' id='project-item'>
                                 <h1>{project.title}</h1>
                                 <p>This page contains the case study of {project.title} which includes the Project Overview, Tools Used and Live Links to the official product.</p>
-                                <a href={project.liveLink} >LIVE LINK</a>
+                                <a href={project.liveLink} target="_blank">LIVE LINK</a>
                             </div>
                             <div className='app__section' >
                                 <div id='project-details__content'>
@@ -227,7 +228,8 @@ const Project = ({ to, theme, handleThemeSelection}: ProjectProps) => {
                                                     )
                                                 }
                                                 <form onSubmit={(e) => handleFormSubmit(e, "skill")} >
-                                                    <FormGroup title={"Add Skill(s)"} type="text" name="skill" handleChange={handleSkillChange} />
+                                                    <TagsInput name="tags" value={skills} onChange={handleSkillChange} />
+                                                    {/* <FormGroup title={"Add Skill(s)"} type="text" name="skill" handleChange={handleSkillChange} /> */}
                                                     {/* <label>Add Skill</label>
                                                     <input type="text" name="skill" onChange={handleSkillChange} value={skill} multiple /> */}
                                                     <button type="submit">Submit</button>

@@ -14,7 +14,7 @@ import grahpql from './assets/graphql.png'
 import typescript from './assets/typescript.png'
 
 
-let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno.herokuapp.com/" : "http://localhost:4000/";
+let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com" : "http://localhost:4000/";
 export default baseUrl
 
 export const roles = [
@@ -76,10 +76,10 @@ export const skills = [
         title: "Git",
         logo: git
     },
-    {
-        title: "Graphql",
-        logo: grahpql
-    },
+    // {
+    //     title: "Graphql",
+    //     logo: grahpql
+    // },
 ]
 
 export const experiences = [
