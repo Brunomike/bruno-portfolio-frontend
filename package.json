@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "tsc": "./node_modules/typescript/bin/tsc",
+    "tsc": "tsc",
     "build": "npm i && npm run tsc && vite build",
     "serve": "vite preview"
   },
