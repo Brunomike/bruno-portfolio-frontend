@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npx tsc && vite build",
-    "serve": "vite preview",
-    "tsc": "tsc"
+    "tsc": "./node_modules/typescript/bin/tsc",
+    "build": "npm run tsc && vite build",
+    "serve": "vite preview"
   },
   "eslintConfig": {
     "extends": [
