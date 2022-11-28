@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "npm run tsc && vite build",
     "serve": "vite preview",
     "tsc": "tsc"
   },
