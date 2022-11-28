@@ -1,11 +1,11 @@
-import React, { useEffect, useState, lazy } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { AppDispatch } from '../app/store';
-const Spinner = lazy(() => import('../components/Spinner/Spinner'));
-const FormGroup = lazy(() => import('../components/FormGroup/FormGroup'));
+import Spinner from '../components/Spinner/Spinner';
+import FormGroup from '../components/FormGroup/FormGroup';
 import { reset, login } from '../features/auth/authSlice';
 
 const Login = () => {

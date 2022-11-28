@@ -1,5 +1,5 @@
-import React, { lazy } from 'react';
-const ProjectContainer = lazy(() => import("../containers/Project/Project"));
+import React from 'react';
+import ProjectContainer from "../containers/Project/Project";
 
 export interface ThemeAndHandleTheme {
   to: string;

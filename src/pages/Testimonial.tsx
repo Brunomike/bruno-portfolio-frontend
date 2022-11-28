@@ -1,6 +1,6 @@
-import React, { lazy } from 'react'
+import React from 'react'
 
-const TestimonialContainer = lazy(() => import('../containers/Testimonial/Testimonial'));
+import TestimonialContainer from '../containers/Testimonial/Testimonial';
 
 const Testimonial = () => {
     return (

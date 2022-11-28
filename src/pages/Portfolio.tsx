@@ -1,14 +1,14 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
-const Header = lazy(() => import('../containers/Header/Header'));
-const Introduction = lazy(() => import('../containers/Introduction/Introduction'));
-const About = lazy(() => import('../containers/About/About'));
-const Skills = lazy(() => import('../containers/Skills/Skills'));
-const Projects = lazy(() => import('../containers/Projects/Projects'));
-const Testimonials = lazy(() => import('../containers/Testimonials/Testimonials'));
-const Contact = lazy(() => import('../containers/Contact/Contact'));
-const Footer = lazy(() => import('../containers/Footer/Footer'));
+import Header from '../containers/Header/Header';
+import Introduction from '../containers/Introduction/Introduction';
+import About from '../containers/About/About';
+import Skills from '../containers/Skills/Skills';
+import Projects from '../containers/Projects/Projects';
+import Testimonials from '../containers/Testimonials/Testimonials';
+import Contact from '../containers/Contact/Contact';
+import Footer from '../containers/Footer/Footer';
 
 interface HomeProps {
     theme: string;

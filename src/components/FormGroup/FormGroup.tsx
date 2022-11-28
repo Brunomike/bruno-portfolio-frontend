@@ -1,5 +1,4 @@
-import { lazy } from 'react';
-const Input = lazy(() => import('../Input/Input'));
+import Input from '../Input/Input';
 import './FormGroup.scss';
 
 interface FormGroupProps {

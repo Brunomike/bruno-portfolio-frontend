@@ -1,6 +1,6 @@
-import React, { lazy } from 'react'
+import React from 'react'
 
-const Header = lazy(() => import('../containers/Header/Header'));
+import Header from'../containers/Header/Header';
 import baseUrl from '../constants'
 
 export interface ThemeAndHandleTheme {

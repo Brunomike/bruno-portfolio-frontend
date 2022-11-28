@@ -1,5 +1,4 @@
-import { lazy } from 'react';
-const NavigationDots = lazy(() => import('../components/NavigationDots/NavigationDots'));
+import NavigationDots from '../components/NavigationDots/NavigationDots';
 
 interface Props {
     Component: JSX.Element;

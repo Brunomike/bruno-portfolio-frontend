@@ -20,7 +20,7 @@ const register = async (userData: any) => {
 //Login User
 const login = async (userData:any) => {
     let LOGIN_URL = API_URL + "signin";
-    const response = await axios.post(LOGIN_URL, userData);
+    const response = await axios.post(LOGIN_URL, userData,{withCredentials:true});
     //console.log(response.headers['set-cookie']);
 
     if (response.data) {
