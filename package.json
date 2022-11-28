@@ -36,9 +36,7 @@
     "sass": "^1.56.1",
     "vite": "^3.2.3",
     "vite-plugin-svgr": "^2.2.2",
-    "vite-tsconfig-paths": "^3.5.2"
-  },
-  "devDependencies": {
+    "vite-tsconfig-paths": "^3.5.2",
     "@types/jest": "^28.1.8",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.17",
