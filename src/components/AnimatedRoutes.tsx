@@ -33,7 +33,7 @@ const AnimatedRoutes: React.FC<Props> = ({ theme, handleThemeSelection }) => {
 
 
                 {
-                    isAuthenticated && (
+                    isAuthenticated ? (
                         <>
                             <Route path="dashboard" element={<Dashboard main="home" handleThemeSelection={handleThemeSelection} />} />
                             <Route path="dashboard/projects" element={<Dashboard main="projects" handleThemeSelection={handleThemeSelection} />} />
@@ -42,6 +42,8 @@ const AnimatedRoutes: React.FC<Props> = ({ theme, handleThemeSelection }) => {
                             <Route path="dashboard/experiences" element={<Dashboard main="experiences" handleThemeSelection={handleThemeSelection} />} />
                             <Route path="dashboard/testimonials" element={<Dashboard main="testimonials" handleThemeSelection={handleThemeSelection} />} />
                         </>
+                    ) : (                        
+                        <Route path="*" element={< NotFound theme={theme}  isUnauthorized={true} />} />
                     )
                 }
 

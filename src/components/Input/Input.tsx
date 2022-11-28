@@ -4,10 +4,10 @@ import './Input.scss';
 interface InputAttrs{
     type:string;
     name:string;
-    placeholder:string;
+    placeholder?:string;
     id:string;
     handleChange:(attrs:any)=>void;
-    value:any;
+    value?:any;
 }
 
 const Input:React.FC<InputAttrs> = ({ type, name, placeholder, id, handleChange, value}) => {

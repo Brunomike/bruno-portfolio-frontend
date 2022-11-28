@@ -6,41 +6,43 @@ import FormGroup from '../../../components/FormGroup/FormGroup';
 import "./Experience.scss";
 import baseUrl from '../../../constants';
 
-interface ExperienceAttrs{     
-      year: string;
-      experiences:[
-          {
-              role:string;
-              position:string;
-              organization:string;
-              abbreviation:string;
-              startDate:string;
-              endDate:string;
-          }
-      ]        
+interface ExperienceItemAttrs {
+    year?: string;
+    role: string;
+    position: string;
+    organization: string;
+    abbreviation: string;
+    startDate: string;
+    endDate: string;
+}
+
+interface ExperienceAttrs {
+    year: string;
+    experiences: ExperienceItemAttrs[]
 }
 
 const Experience = () => {
-    const [formData, setFormData] = useState({
-        "year": "",
-        "role": "",
-        "position": "",
-        "organization": "",
-        "start": "",
-        "end": ""
+    const [formData, setFormData] = useState<ExperienceItemAttrs>({
+        year: "",
+        role: "",
+        position: "",
+        organization: "",
+        abbreviation: "",
+        startDate: "",
+        endDate: ""
     })
     const [experiences, setExperiences] = useState<ExperienceAttrs[]>([])
 
-    const { year, role, position, organization, start, end } = formData
+    const { year, role, position, organization, startDate, endDate } = formData
 
     useEffect(() => {
         axios.get(baseUrl + "api/experiences")
             .then(res => res.data)
-            .then((data) => {                
+            .then((data) => {
                 setExperiences(data.data.experiences);
             })
             .catch(err => {
-                console.log(err)
+                //console.log(err)
             })
     }, [])
 
@@ -48,31 +50,33 @@ const Experience = () => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
-        }))
+        }))        
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (year === "" || role === "" || position === "" || organization === "" || start === "" || end === "") {
+        if (year === "" || role === "" || position === "" || organization === "" || startDate === "" || endDate === "") {            
             toast.error("All fields are required!")
-        } else {
+        } else {                    
             axios.post(baseUrl + "api/experiences", formData, {
                 headers: {
-                    "Content-Type":"application/json"
-                }
+                    "Content-Type": "application/json"
+                },
+                withCredentials: true
             })
                 .then(res => res.data)
                 .then(data => {
                     setExperiences(data.data.experiences);
                     toast.success(data.message);
                     setFormData({
-                        "year": "",
-                        "role": "",
-                        "position": "",
-                        "organization": "",
-                        "start": "",
-                        "end": ""
+                        year: "",
+                        role: "",
+                        position: "",
+                        organization: "",
+                        abbreviation: "",
+                        startDate: "",
+                        endDate: ""
                     })
                 }).catch(err => {
                     toast.error(err.response.data.message);
@@ -107,8 +111,9 @@ const Experience = () => {
                 <FormGroup type="text" id="role" name="role" placeholder="" title="Role" value={formData.role} handleChange={handleChange} />
                 <FormGroup type="text" id="position" name="position" placeholder="" title="Position" value={formData.position} handleChange={handleChange} />
                 <FormGroup type="text" id="organization" name="organization" placeholder="" title="Organization" value={formData.organization} handleChange={handleChange} />
-                <FormGroup type="date" id="start" name="start" placeholder="" title="Start Date" value={formData.start} handleChange={handleChange} />
-                <FormGroup type="date" id="end" name="end" placeholder="" title="End Date" value={formData.end} handleChange={handleChange} />
+                <FormGroup type="text" id="abbreviation" name="abbreviation" placeholder="" title="Abbreviation" value={formData.abbreviation} handleChange={handleChange} />
+                <FormGroup type="date" id="start" name="startDate" placeholder="" title="Start Date" value={formData.startDate} handleChange={handleChange} />
+                <FormGroup type="date" id="end" name="endDate" placeholder="" title="End Date" value={formData.endDate} handleChange={handleChange} />
                 <button type="submit">Submit</button>
             </form>
         </div>

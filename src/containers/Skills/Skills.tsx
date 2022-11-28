@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 import AppWrapper from '../../hoc/AppWrapper';
 import MotionWrapper from '../../hoc/MotionWrapper';
@@ -6,18 +7,18 @@ import baseUrl, { skills } from '../../constants';
 import './Skills.scss';
 
 
-interface ExperienceAttrs{     
+interface ExperienceAttrs {
     year: string;
-    experiences:[
+    experiences: [
         {
-            role:string;
-            position:string;
-            organization:string;
-            abbreviation:string;
-            startDate:string;
-            endDate:string;
+            role: string;
+            position: string;
+            organization: string;
+            abbreviation: string;
+            startDate: string;
+            endDate: string;
         }
-    ]        
+    ]
 }
 
 const Skills = () => {
@@ -26,11 +27,11 @@ const Skills = () => {
     useEffect(() => {
         fetch(baseUrl + 'api/experiences')
             .then(res => res.json())
-            .then(res=>res.data)
-            .then(data => {                                
+            .then(res => res.data)
+            .then(data => {
                 setExperiences(data.experiences);
             })
-    }, [])
+    }, [])    
 
     return (
         <section className='skills app__flex' >
@@ -52,8 +53,19 @@ const Skills = () => {
                                 <div className='experience__items app__flex'>
                                     {group.experiences.map((experience, index) => (
                                         <div className='experience__items-container' key={`${index}#experience__items-container`}>
-                                            <div className='experience__item bold-text'>{`${experience.position === 'Intern' ? experience.position + ', ' : ''}${experience.role}`}</div>
-                                            <div className='experience__item company-text' >{experience.organization}</div>
+                                            <div className='experience__item bold-text'>{`${experience.position === 'Intern' ? experience.position + ', ' : ''}${experience.role}`}</div>                                            
+                                            {window.innerWidth < 500 ? (                                                
+                                                <div className='experience__item company-text'>{experience.organization}</div>
+                                            ) : (
+                                                <>
+                                                    <div className='experience__item company-text' data-tip={experience.organization} >{experience.abbreviation}</div>
+                                                    <ReactTooltip place="bottom" type="light" effect="solid" offset={{ top: 14, left: 120 }} padding="8px" />
+                                                </>
+                                            )}
+                                            {/* <Tooltip content="you can have compound alignments" direction="right-end" className="target" tipContentClassName="">
+                                                right-end with arrow
+                                            </Tooltip>
+                                            import Tooltip from 'react-tooltip-lite'; */}
                                         </div>
                                     ))}
                                 </div>

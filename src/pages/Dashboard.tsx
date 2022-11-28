@@ -11,6 +11,7 @@ import Messages from '../containers/admin/Messages/Messages'
 import Testimonials from '../containers/admin/Testimonials/Testimonials'
 import Experience from '../containers/admin/Experience/Experience'
 
+
 interface DashboardProps {
     main: string;
     handleThemeSelection(): void;
@@ -33,7 +34,7 @@ const Dashboard = ({ main, handleThemeSelection }: DashboardProps) => {
                     <>
                         {main === "home" && <Home />}
                         {main === "projects" && <Projects />}
-                        {main === "project" && <Project to="admin" token={user.token} theme={''} handleThemeSelection={handleThemeSelection} />}
+                        {main === "project" && <Project to="admin"  theme={''} handleThemeSelection={handleThemeSelection} />}
                         {main === "messages" && <Messages />}
                         {main === "testimonials" && <Testimonials />}
                         {main === "experiences" && <Experience />}

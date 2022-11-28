@@ -1,5 +1,5 @@
-import React from 'react'
 import { motion } from 'framer-motion'
+import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 //import Image from '../../assets/bruno-no-bg-2.png'
 import Image from '../../assets/IMG_6234-c-removebg.png'
@@ -51,7 +51,8 @@ const Introduction = () => {
                 transition={{ duration: 0.5, delayChildren: 0.5 }}
                 className='intro__photo'
             >
-                <img src={Image} alt="Michael Bruno" />
+                {/* <img src={Image} alt="Michael Bruno" /> */}
+                <LazyLoadImage alt='Michael Bruno'  src={Image}/>
                 {savedTheme === "light" ?
                     <motion.img
                         whileInView={{ scale: [0, 1] }}

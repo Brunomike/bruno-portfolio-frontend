@@ -8,7 +8,7 @@ import Logo from '../../assets/bruno-logo-no-bg.png'
 import DarkLogo from '../../assets/bruno-logo-dark-no-bg1.png'
 import './Header.scss';
 
-const Header = ({ theme, handleThemeSelection }) => {
+const Header = ({ theme, handleThemeSelection }: { theme: string, handleThemeSelection(): void }) => {
     const [toggle, setToggle] = useState(false)
 
     return (
@@ -20,7 +20,7 @@ const Header = ({ theme, handleThemeSelection }) => {
                 {['home', 'about', 'skills', 'projects', 'contact', 'resume'].map((item, index) => {
                     if (item === 'resume') {
                         return (
-                            <li key={`link-${index}`} className='app__flex p-text'>                                                                
+                            <li key={`link-${index}`} className='app__flex p-text'>
                                 <a href={`/${item}`}>{item}</a>
                             </li>
                         )
@@ -51,8 +51,8 @@ const Header = ({ theme, handleThemeSelection }) => {
                             {['home', 'about', 'skills', 'projects', 'contact', 'resume'].map((item, index) => {
                                 if (item === 'resume') {
                                     return (
-                                        <li key={item} >                                            
-                                        <a href={`/${item}`} onClick={() => setToggle(false)} >{item}</a>
+                                        <li key={item} >
+                                            <a href={`/${item}`} onClick={() => setToggle(false)} >{item}</a>
                                         </li>
                                     )
                                 } else return (

@@ -1,4 +1,3 @@
-import React from 'react'
 import RegistrationForm from '../containers/RegistrationForm/RegistrationForm'
 
 const SignUp = () => {    

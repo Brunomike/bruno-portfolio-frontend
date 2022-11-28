@@ -1,5 +1,3 @@
-import React from 'react';
-
 const NavigationDots = ({ active }: { active: string }) => {
     return (
         <div className='app__navigation'>
@@ -14,5 +12,4 @@ const NavigationDots = ({ active }: { active: string }) => {
         </div>
     )
 }
-
 export default NavigationDots;

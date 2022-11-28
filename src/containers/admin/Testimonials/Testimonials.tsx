@@ -58,7 +58,8 @@ const Testimonials = () => {
       axios.post(baseUrl + "api/testimonials/send", formData, {
         headers: {
           "Content-Type":"application/json"
-        }
+        },
+        withCredentials:true
       })
         .then(res => res.data)
         .then(data => {
@@ -99,9 +100,9 @@ const Testimonials = () => {
 
       <form onSubmit={handleSubmit}>
         <h2>Testimonial Request</h2>
-        <FormGroup title={"Email Address"} type="email" name="email" placeholder="" handleChange={handleChange} value={formData.email} />
-        <FormGroup title={"Full Name"} type="text" name="fullName" placeholder="" handleChange={handleChange} value={formData.fullName} />
-        <FormGroup title={"Project Title or Work "} type="text" name="title" placeholder="" handleChange={handleChange} value={formData.title} />
+        <FormGroup title={"Email Address"} id="email" type="email" name="email" placeholder="" handleChange={handleChange} value={formData.email} />
+        <FormGroup title={"Full Name"} id="fullName" type="text" name="fullName" placeholder="" handleChange={handleChange} value={formData.fullName} />
+        <FormGroup title={"Project Title or Work "} id="title" type="text" name="title" placeholder="" handleChange={handleChange} value={formData.title} />
         <button type="submit">Submit</button>
       </form>
     </div>
