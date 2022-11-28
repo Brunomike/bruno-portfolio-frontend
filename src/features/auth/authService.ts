@@ -21,7 +21,7 @@ const register = async (userData: any) => {
 const login = async (userData:any) => {
     let LOGIN_URL = API_URL + "signin";
     const response = await axios.post(LOGIN_URL, userData);
-    console.log(response.headers['set-cookie']);
+    //console.log(response.headers['set-cookie']);
 
     if (response.data) {
         if (response.data.data.message = "Login success") {

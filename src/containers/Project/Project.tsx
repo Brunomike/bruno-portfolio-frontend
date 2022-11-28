@@ -34,11 +34,10 @@ interface ProjectAttrs {
 interface ProjectProps {
     to: string;
     theme: string;
-    handleThemeSelection: () => void;
-    token: string;
+    handleThemeSelection: () => void;    
 }
 
-const Project = ({ to, theme, handleThemeSelection }: ProjectProps) => {
+const Project:React.FC<ProjectProps> = ({ to, theme, handleThemeSelection }) => {
     const [project, setProject] = useState<ProjectAttrs | null>()
     const [imageList, setImageList] = useState<File[]>([])
     const [skills, setSkills] = useState<string[]>([])
@@ -122,13 +121,12 @@ const Project = ({ to, theme, handleThemeSelection }: ProjectProps) => {
     }
 
     const handleSkillChange = (skills: string[]) => {        
-        setSkills(skills)
-        console.log(skills);
+        setSkills(skills)        
     }
 
     if (to === "client") {
         return (
-            <>
+            <React.Fragment>
                 <Header theme={theme} handleThemeSelection={handleThemeSelection} />
                 {project ?
                     (
@@ -188,9 +186,9 @@ const Project = ({ to, theme, handleThemeSelection }: ProjectProps) => {
                         </>
                     )}
                 <Footer />
-            </>
+            </React.Fragment>
         )
-    } else if (to === "admin") {
+    } else {
         return (
             <div className="admin-project__container">
                 {project ?
@@ -228,10 +226,7 @@ const Project = ({ to, theme, handleThemeSelection }: ProjectProps) => {
                                                     )
                                                 }
                                                 <form onSubmit={(e) => handleFormSubmit(e, "skill")} >
-                                                    <TagsInput name="tags" value={skills} onChange={handleSkillChange} />
-                                                    {/* <FormGroup title={"Add Skill(s)"} type="text" name="skill" handleChange={handleSkillChange} /> */}
-                                                    {/* <label>Add Skill</label>
-                                                    <input type="text" name="skill" onChange={handleSkillChange} value={skill} multiple /> */}
+                                                    <TagsInput  value={skills} onChange={handleSkillChange} />                                                
                                                     <button type="submit">Submit</button>
                                                 </form>
                                             </div>
@@ -256,16 +251,13 @@ const Project = ({ to, theme, handleThemeSelection }: ProjectProps) => {
                             </div>
                         </>
                     )}
-                <form onSubmit={(e) => handleFormSubmit(e, "")} >
-                    {/* <label>Image</label>
-                    <input type="file" name="uploadedImages" onChange={handleFilesInputChage} multiple /> */}
-                    <FormGroup title={"Project Image(s)"} type="file" name="uploadedImages" handleChange={handleFilesInputChage} />
+                <form onSubmit={(e) => handleFormSubmit(e, "")} >                    
+                    <FormGroup title={"Project Image(s)"} id="image" type="file" name="uploadedImages" handleChange={handleFilesInputChage} />
                     <button type="submit">Submit</button>
                 </form>
             </div>
         )
     }
-
 }
 
 export default Project;

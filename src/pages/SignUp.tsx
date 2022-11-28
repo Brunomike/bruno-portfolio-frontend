@@ -1,7 +1,7 @@
-import React from 'react'
-import RegistrationForm from '../containers/RegistrationForm/RegistrationForm'
+import React, { lazy } from 'react';
+const RegistrationForm = lazy(() => import('../containers/RegistrationForm/RegistrationForm'));
 
-const SignUp = () => {    
+const SignUp = () => {
     return (
         <div className='app__container center'>
             <RegistrationForm />

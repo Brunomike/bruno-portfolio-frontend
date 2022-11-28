@@ -14,7 +14,7 @@ import grahpql from './assets/graphql.png'
 import typescript from './assets/typescript.png'
 
 
-let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com" : "http://localhost:4000/";
+let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com/" : "http://localhost:4000/";
 export default baseUrl
 
 export const roles = [
@@ -144,3 +144,10 @@ export const projects = [
         imgUrl: BackEnd
     },
 ]
+
+
+export interface ThemeAndHandleTheme {
+    to?:string;
+    theme: string;
+    handleThemeSelection(): void;
+}

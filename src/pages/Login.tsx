@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, lazy } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { AppDispatch } from '../app/store';
-import Spinner from '../components/Spinner/Spinner';
-import FormGroup from '../components/FormGroup/FormGroup';
+const Spinner = lazy(() => import('../components/Spinner/Spinner'));
+const FormGroup = lazy(() => import('../components/FormGroup/FormGroup'));
 import { reset, login } from '../features/auth/authSlice';
 
 const Login = () => {
@@ -63,8 +63,8 @@ const Login = () => {
       <div className='app__flex login__container'>
         <h2>SignIn</h2>
         <form onSubmit={handleSubmit}>
-          <FormGroup title={"Email Address"} type="email" name={"email"} placeholder="" handleChange={handleChange} value={formData.email} />
-          <FormGroup title={"Password"} type="password" name={"password"} placeholder="" handleChange={handleChange} value={formData.password} />
+          <FormGroup title={"Email Address"} id="email" type="email" name={"email"} placeholder="" handleChange={handleChange} value={formData.email} />
+          <FormGroup title={"Password"} id="password" type="password" name={"password"} placeholder="" handleChange={handleChange} value={formData.password} />
           <p style={{ marginBottom: "10px" }}>Don't have an account? <Link to={"/signup"}>Signup</Link></p>
 
           <button type="submit">Signin</button>

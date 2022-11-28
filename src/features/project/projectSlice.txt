@@ -13,7 +13,7 @@ const initialState = {
 export const getProjects = createAsyncThunk('api/projects', async (_, thunkAPI) => {
     try {
         return await adminService.getProjects()
-    } catch (error) {
+    } catch (error ) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }

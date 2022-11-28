@@ -1,7 +1,13 @@
-import React from 'react'
-import ProjectContainer from "../containers/Project/Project"
+import React, { lazy } from 'react';
+const ProjectContainer = lazy(() => import("../containers/Project/Project"));
 
-const Project = ({ to, theme, handleThemeSelection }) => {
+export interface ThemeAndHandleTheme {
+  to: string;
+  theme: string;
+  handleThemeSelection(): void;
+}
+
+const Project: React.FC<ThemeAndHandleTheme> = ({ to, theme, handleThemeSelection }) => {
   return (
     <ProjectContainer to={to} theme={theme} handleThemeSelection={handleThemeSelection} />
   )

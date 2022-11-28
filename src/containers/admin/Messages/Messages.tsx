@@ -61,7 +61,7 @@ const Messages = () => {
     })
       .then(res => res.data)
       .then(data => {
-        console.log(data);
+        //console.log(data);
         toast.success("Message sent!")
         setReplyMessage("")
       })

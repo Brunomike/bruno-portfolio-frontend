@@ -9,7 +9,7 @@ import MotionWrapper from '../../hoc/MotionWrapper'
 import AppWrapper from '../../hoc/AppWrapper'
 import './Contact.scss'
 
-const Contact = ({ token }) => {
+const Contact = () => {
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -19,7 +19,7 @@ const Contact = ({ token }) => {
 
     const { fullName, email, message } = formData
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { value, name } = e.target
         setFormData((prevState) => ({
             ...prevState,

@@ -88,12 +88,12 @@ const Testimonial = () => {
         <div className='app__flex testimonial' id='testimonials'>
             <form onSubmit={handleSubmit}>
                 <h2 style={{ paddingBottom: "8px" }}>Fill Testimonial</h2>
-                <FormGroup title={"Full Name"} type="text" name="fullName" placeholder="" handleChange={handleChange} value={formData.fullName} />
-                <FormGroup title={"Email Address"} type="email" name="email" placeholder="" handleChange={handleChange} value={formData.email} />
-                <FormGroup title={"Phone Number"} type="text" name="phoneNumber" placeholder="" handleChange={handleChange} value={formData.phoneNumber} />
-                <FormGroup title={"Feedback"} type="text" name="feedback" placeholder="" handleChange={handleChange} value={formData.feedback} />
-                <FormGroup title={"Company"} type="text" name="company" placeholder="" handleChange={handleChange} value={formData.company} />
-                <FormGroup title="Image" type="file" name="uploadedImages" handleChange={handleFileInput} />
+                <FormGroup title={"Full Name"} id="fullName" type="text" name="fullName" placeholder="" handleChange={handleChange} value={formData.fullName} />
+                <FormGroup title={"Email Address"} id="email" type="email" name="email" placeholder="" handleChange={handleChange} value={formData.email} />
+                <FormGroup title={"Phone Number"} id="phoneNumber" type="text" name="phoneNumber" placeholder="" handleChange={handleChange} value={formData.phoneNumber} />
+                <FormGroup title={"Feedback"} id="feedback" type="text" name="feedback" placeholder="" handleChange={handleChange} value={formData.feedback} />
+                <FormGroup title={"Company"} id="company" type="text" name="company" placeholder="" handleChange={handleChange} value={formData.company} />
+                <FormGroup title="Image" id="images" type="file" name="uploadedImages" handleChange={handleFileInput} />
                 {/* <label htmlFor="uploadedImages"></label>
                 <input type="file" name="uploadedImages" onChange={handleFileInput} /> */}
                 <button type='submit'>Submit</button>

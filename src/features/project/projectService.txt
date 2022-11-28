@@ -9,8 +9,8 @@ const getProjects = async () => {
 };
 
 //Post Project
-const postProject = async (projectData) => {
-    const response = await axios.post(API_URL , projectData);
+const postProject = async (projectData: any) => {
+    const response = await axios.post(API_URL, projectData);
     return response.data;
 };
 
@@ -19,7 +19,7 @@ const postProject = async (projectData) => {
 
 const adminService = {
     getProjects,
-    postProject,    
+    postProject,
 };
 
 export default adminService;

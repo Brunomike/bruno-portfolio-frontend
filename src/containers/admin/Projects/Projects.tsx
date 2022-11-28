@@ -169,11 +169,11 @@ const Projects = () => {
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <h2>Add New Project</h2>
                         <br />
-                        <FormGroup title={"Title"} type="text" name={"title"} placeholder="" handleChange={handleChange} value={formData.title} />
-                        <FormGroup title={"Overview"} type="text" name={"overview"} placeholder="" handleChange={handleChange} value={formData.overview} />
-                        <FormGroup title={"Description"} type="text" name={"description"} placeholder="" handleChange={handleChange} value={formData.description} />
-                        <FormGroup title={"Live Link"} type="text" name={"liveLink"} placeholder="" handleChange={handleChange} value={formData.liveLink} />
-                        <FormGroup title={"Code Link"} type="text" name={"codeLink"} placeholder="" handleChange={handleChange} value={formData.codeLink} />
+                        <FormGroup title={"Title"} id="title" type="text" name={"title"} placeholder="" handleChange={handleChange} value={formData.title} />
+                        <FormGroup title={"Overview"} id="overview" type="text" name={"overview"} placeholder="" handleChange={handleChange} value={formData.overview} />
+                        <FormGroup title={"Description"} id="description" type="text" name={"description"} placeholder="" handleChange={handleChange} value={formData.description} />
+                        <FormGroup title={"Live Link"} id="liveLink" type="text" name={"liveLink"} placeholder="" handleChange={handleChange} value={formData.liveLink} />
+                        <FormGroup title={"Code Link"} id="codeLink" type="text" name={"codeLink"} placeholder="" handleChange={handleChange} value={formData.codeLink} />
                         <label htmlFor="category">Choose Project Category</label>
                         <select name={"category"} id="category" value={category} onChange={handleChange}>
                             <option value="front-end" defaultValue={"front-end"}>Front End</option>

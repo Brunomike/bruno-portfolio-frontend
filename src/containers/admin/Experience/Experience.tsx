@@ -42,7 +42,7 @@ const Experience = () => {
                 setExperiences(data.data.experiences);
             })
             .catch(err => {
-                console.log(err)
+                //console.log(err)
             })
     }, [])
 
