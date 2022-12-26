@@ -14,10 +14,10 @@ import grahpql from './assets/graphql.png'
 import typescript from './assets/typescript.png'
 
 
-//let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com/" : "http://localhost:4000/";
+let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com/" : "http://localhost:4000/";
 //let baseUrl = "https://michaelbruno-portfolio.onrender.com/";
-let baseUrl = "https://bruno-portfolio-production.up.railway.app/";
-export default baseUrl
+//let baseUrl = process.env.NODE_ENV === 'production' ? "https://bruno-portfolio-production.up.railway.app/" : "http://localhost:4000/";
+export default baseUrl;
 
 export const roles = [
     {
@@ -149,7 +149,7 @@ export const projects = [
 
 
 export interface ThemeAndHandleTheme {
-    to?:string;
+    to?: string;
     theme: string;
     handleThemeSelection(): void;
 }
