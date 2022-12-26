@@ -19,8 +19,8 @@ const register = async (userData: any) => {
 
 //Login User
 const login = async (userData: any) => {
-  let LOGIN_URL = API_URL + "signin";
-    const response = await axios.post(LOGIN_URL, userData,{withCredentials:true});
+    let LOGIN_URL = API_URL + "signin";
+    const response = await axios.post(LOGIN_URL, userData, { withCredentials: true });
     //console.log(response.headers['set-cookie']);
 
     if (response.data) {
@@ -37,7 +37,7 @@ const logout = async () => {
     localStorage.removeItem('user');
     localStorage.removeItem('isAuthenticated');
     //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";    
-    let LOGOUT_URL=API_URL+"signout"
+    let LOGOUT_URL = API_URL + "signout"
     await axios.get(LOGOUT_URL);
 };
 
