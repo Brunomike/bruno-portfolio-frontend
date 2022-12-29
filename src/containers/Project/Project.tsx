@@ -147,7 +147,7 @@ const Project:React.FC<ProjectProps> = ({ to, theme, handleThemeSelection }) => 
                                         </div>
                                         <div className='project-details__desc project-details__item'>
                                             <h2 className='project-details__content-title'>Project Description</h2>
-                                            <p>{project.description}</p>
+                                            {project.description}
                                         </div>
                                         <div className='prfoject-details__tools project-details__item'>
                                             <h2 className='project-details__content-title'>Tools Used</h2>
@@ -210,7 +210,7 @@ const Project:React.FC<ProjectProps> = ({ to, theme, handleThemeSelection }) => 
                                         </div>
                                         <div className='project-details__desc project-details__item'>
                                             <h2 className='project-details__content-title'>Project Description</h2>
-                                            <p>{project.description}</p>
+                                            {project.description}
                                         </div>
                                         <div className='project-details__tools project-details__item'>
                                             <h2 className='project-details__content-title'>Tools Used</h2>

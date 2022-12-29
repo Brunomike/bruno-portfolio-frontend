@@ -50,20 +50,20 @@ const Experience = () => {
         setFormData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
-        }))        
+        }))
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        if (year === "" || role === "" || position === "" || organization === "" || startDate === "" || endDate === "") {            
+        if (year === "" || role === "" || position === "" || organization === "" || startDate === "" || endDate === "") {
             toast.error("All fields are required!")
-        } else {                    
+        } else {
             axios.post(baseUrl + "api/experiences", formData, {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                withCredentials: true
+                withCredentials: true,                
             })
                 .then(res => res.data)
                 .then(data => {

@@ -14,8 +14,8 @@ import grahpql from './assets/graphql.png'
 import typescript from './assets/typescript.png'
 
 
-let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com/" : "http://localhost:4000/";
-//let baseUrl = "https://michaelbruno-portfolio.onrender.com/";
+//let baseUrl = process.env.NODE_ENV === 'production' ? "https://michaelbruno-portfolio.onrender.com/" : "http://localhost:4000/";
+let baseUrl = "https://michaelbruno-portfolio.onrender.com/";
 //let baseUrl = process.env.NODE_ENV === 'production' ? "https://bruno-portfolio-production.up.railway.app/" : "http://localhost:4000/";
 export default baseUrl;
 
